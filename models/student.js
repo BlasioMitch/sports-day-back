@@ -22,6 +22,12 @@ const studentSchema = new mongoose.Schema({
     house: {
         type: String,
     },
+    game_plays:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: 'GamesPlayed'
+        }
+    ]
 })
 
 studentSchema.set('toJSON',{

@@ -31,9 +31,26 @@ studentsRouter.post('/',(request, response,next) => {
 })
 // TODO GEt one student details
 studentsRouter.get('/:id',(request, response,next) => {
-    Student.findById(request.params.id).populate({path:'games_played', populate:{path:'game',participants:0}})
+    Student.findById(request.params.id)
+            .select({first_name:1, last_name:1})
+            .populate(
+                {
+                    path:'game_plays',
+                    populate:{
+                        path:'game',
+                        select:'game_name category',
+                    },
+                //    populate:{
+                //        path:'participants',
+                //        model:'GamesPlayed',
+                //        select:'position',
+                //        strictPopulate:false
+                //     } 
+                
+                })
         .then(student => {
             if(student){
+                console.log(student)
                 response.json(student)
             }else {
                 response.status(404).end()

@@ -22,7 +22,10 @@ const gameSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    
+    game_play: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'GamesPlayed'
+    }
 })
 
 gameSchema.set('toJSON',{

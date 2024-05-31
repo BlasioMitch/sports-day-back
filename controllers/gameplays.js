@@ -33,13 +33,19 @@ GamePlayRouter.post('/', async (request, response, next) => {
     console.log(game_available)
     const students_available = body.participants.map(p => student_ids.includes(p.player)).every(i => i===true)
     console.log(students_available)
+    
     if (game_available){ 
         if(students_available){
             const gamePlay = new GamePlay({
                 game: body.game,
                 participants: body.participants
             })
-            Game.findByIdAndUpdate(body.game,{played_status:true},{new:true})
+            body.participants.forEach(async participant => {
+                const stu_part = await Student.findById(participant.player)
+                stu_part.game_plays = stu_part.game_plays.concat(gamePlay.id)
+                stu_part.save()
+            })
+            Game.findByIdAndUpdate(body.game,{played_status:true,game_play:gamePlay.id},{new:true})
                 .then(g => console.log('Game updated'))
                 .catch(err => next(err))
             gamePlay.save().then(gp => {

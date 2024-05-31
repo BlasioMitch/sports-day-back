@@ -2,13 +2,10 @@ POST http://localhost:3001/api/students
 Content-Type: application/json
 
 {
-   "first_name":"Mitchell",
-   "last_name":"Nsimbi",
-   "other_name":"Blasio",
-   "dob":"12/04/2000",
-   "house":"wind",
-   "games_played":[
-      {"game":"664e41038b131d61f7aad12c", "points":3}
-   ]
-   
-}
+    "first_name": "Rogers",
+    "last_name": "Mukiibi",
+    "other_name": "Timothy",
+    "dob": "0208-06-30T21:32:44.000Z",
+    "house": "Water"
+
+  }

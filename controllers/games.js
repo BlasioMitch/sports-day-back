@@ -1,15 +1,14 @@
 const gamesRouter = require('express').Router()
 const Game = require('../models/game')
 
-// TODO Get all Games
+// DONE Get all Games
 gamesRouter.get('/',(request, response, next) =>{
     Game.find({}).then(games => {
-        console.log('Someeeeeeeething get all games')
         response.json(games)
     }).catch(err => next(err))
 })
 
-// TODO Create a Game
+// TODO Create a Game || Check for participants to edit the gamesplayed schema
 gamesRouter.post('/', (request, response, next) =>{
     const body = request.body
 
@@ -17,7 +16,6 @@ gamesRouter.post('/', (request, response, next) =>{
         game_name: body.game_name,
         category: body.category,
         relay: body.relay,
-        participants: body.participants
     })
     game.save()
         .then(savedGame => {
@@ -28,19 +26,42 @@ gamesRouter.post('/', (request, response, next) =>{
 
 // TODO Get one Game details
 gamesRouter.get('/:id', (request, response) => {
-    const id = Number(request.params.id)
-    const game = games.find(game => game.id === id)
-    response.json(game)
+    Game.findById(request.params.id)
+        .then(game =>{
+            if (game){
+                response.json(game)
+            } else {
+                response.status(404).end()
+            }
+        })
+        .catch(err => next(err))
 })
 
-// TODO Edit one Game
-gamesRouter.put('/:id',(request, response) =>{
+// TODO Edit one Game || Check When adding participants to access the games played schema
+gamesRouter.put('/:id',(request, response, next) =>{
+    const body = request.body
+    const game = {
+        game_name: body.game_name,
+        category: body.category,
+        relay: body.relay,
+        played_Status: body.played_status
+    }
 
+    Game.findByIdAndUpdate(request.params.id, game, {new:true})
+        .then(updatedGame => {
+            response.json(updatedGame)
+        })
+        .catch(err => next(err))
 })
 
-// TODO Delete one Game
-gamesRouter.delete('/:id',(request, response) =>{
-
+// TODO Delete one Game 
+// INFO Check if game was played
+gamesRouter.delete('/:id',(request, response,next) =>{
+    Game.findByIdAndDelete(request.params.id)
+        .then(() =>{
+            response.status(204).end()
+        })
+        .catch(err => next(err))
 })
 
 module.exports = gamesRouter

@@ -7,6 +7,7 @@ const gamesRouter = require('./controllers/games')
 const studentsRouter = require('./controllers/students')
 const mongoose = require('mongoose')
 const middleware = require('./utils/middleware')
+const GamePlayRouter = require('./controllers/gameplays')
 
 const mongodb_uri = 'mongodb+srv://@cluster1.qrq0wbi.mongodb.net/sportsday?retryWrites=true&w=majority'
 mongoose.set('strictQuery', false)
@@ -17,7 +18,8 @@ mongoose.connect(config.MONGODB_URI)
         logger.info('Connected to MongoDB')
     })
     .catch(err =>{
-        logger.error('Erro connect to MongoDB ',err.mesage)
+        logger.info('mongodburi is ', config.MONGODB_URI)
+        logger.error('Error connecting to MongoDB ',err.message)
     })
 
 
@@ -28,8 +30,9 @@ app.use(middleware.requestLogger)
 
 app.use('/api/students', studentsRouter)
 app.use('/api/games', gamesRouter)
+app.use('/api/gameplays', GamePlayRouter)
 
 app.use(middleware.unknownEndPoint)
 // app.use(middleware.errorHandler)
 
-module.exports =  app
+module.exports =  app 

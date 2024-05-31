@@ -1,7 +1,8 @@
 const studentsRouter = require('express').Router()
 const Student = require('../models/student')
+const Game = require('../models/game')
 
-// TODO Get all student details
+// DONE Get all student details
 studentsRouter.get('/', (request, response, next) =>{
     Student.find({}).then(students =>{
         console.log('Students come...')
@@ -10,7 +11,8 @@ studentsRouter.get('/', (request, response, next) =>{
 })
 
 // TODO Create a student 
-studentsRouter.post('/',(request, response) => {
+// INFO To be deleted, not Required in production 
+studentsRouter.post('/',(request, response,next) => {
     const body = request.body
     const student = new Student({
         first_name: body.first_name,
@@ -18,10 +20,9 @@ studentsRouter.post('/',(request, response) => {
         other_name: body.other_name,
         dob: body.dob,
         house: body.house,
-        games_played:body.games_played
 
     })
-
+ 
     student.save()
         .then(savedStudent =>{
             response.json(savedStudent)
@@ -29,18 +30,22 @@ studentsRouter.post('/',(request, response) => {
         .catch( err => next(err))
 })
 // TODO GEt one student details
-studentsRouter.get('/:id',(request, response) => {
-    const id = Number(request.params.id)
-    const student = students.find(student => student.id === id)
-    response.json(student)
+studentsRouter.get('/:id',(request, response,next) => {
+    Student.findById(request.params.id).populate({path:'games_played', populate:{path:'game',participants:0}})
+        .then(student => {
+            if(student){
+                response.json(student)
+            }else {
+                response.status(404).end()
+            }
+        })
+        .catch(err => next(err))
 })
-// TODO Edit one student details
-studentsRouter.put('/:id', (request,response) =>{
+studentsRouter.delete('/:id', (request, response,next) =>{
+    Student.findByIdAndDelete(request.params.id)
+        .then(student => response.status(204).end())
+        .catch(err => next(err))
+})
 
-})
-// TODO Delete one student
-studentsRouter.delete('/:id', (request, response) => {
-
-})
 
 module.exports = studentsRouter

@@ -1,0 +1,6 @@
+PUT http://localhost:3001/api/games/6658847a1516a7b0e2704580
+Content-Type: application/json
+
+{
+    "participants":["6658842a1516a7b0e270457d","664e3f418c2b74192f5cf1c7"]
+}

@@ -2,11 +2,7 @@ POST http://localhost:3001/api/games
 Content-Type: application/json
 
 {
-    "game_name":"Javelin",
-    "category":"U12",
-    "relay":false,
-    "participants":[
-        "664e3f418c2b74192f5cf1c7"
-       
-    ]
+    "game_name":"400M sprint",
+    "category":"U14",
+    "relay":false
 }

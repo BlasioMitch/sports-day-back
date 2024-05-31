@@ -18,12 +18,11 @@ const gameSchema = new mongoose.Schema({
         required: true
 
     },
-    participants: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Student'
-        }
-    ] 
+    played_status: {
+        type: Boolean,
+        default: false,
+    },
+    
 })
 
 gameSchema.set('toJSON',{

@@ -7,7 +7,6 @@ const studentSchema = new mongoose.Schema({
         type: String,
         required: true,
         minLength: 3
-
     },
     last_name: {
         type: String,
@@ -23,15 +22,6 @@ const studentSchema = new mongoose.Schema({
     house: {
         type: String,
     },
-    games_played: [
-        {
-            game: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Game'
-            },
-            points: { type: Number, min: 1 , max: 4 }
-        }
-    ]
 })
 
 studentSchema.set('toJSON',{

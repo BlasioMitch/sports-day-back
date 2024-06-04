@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-// TODO better models with validation and referencing
+// DONE better models with validation and referencing
 const gameSchema = new mongoose.Schema({
     game_name: {
         type: String,
@@ -21,10 +21,6 @@ const gameSchema = new mongoose.Schema({
     played_status: {
         type: Boolean,
         default: false,
-    },
-    game_play: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'GamesPlayed'
     }
 })
 

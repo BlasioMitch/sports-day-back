@@ -6,12 +6,22 @@ const requestLogger = (request, response, next) =>{
     next()
 }
 
-const unknownEndPoint = (request, response, next) =>{
+const unknownEndPoint = (error, request, response, next) =>{
     response.status(404).send({error:"Endpoint doesn't exist"})
 }
 
-// TODO Error Handler here
+// DONE Error Handler here
+const errorHandler = (request, response, next) => {
+    if(error.name === 'CastError'){
+        return response.status(400).send({error:'malformatted ID'})
+
+    }else if (error.name === 'ValidationError'){
+        return response.status(400).json({error:error.message})
+    }
+
+    next(error)
+}
 
 module.exports = {
-    requestLogger, unknownEndPoint
+    requestLogger, unknownEndPoint, errorHandler
 }

@@ -2,18 +2,17 @@ const GamePlayRouter = require('express').Router()
 const GamePlay = require('../models/gameplay')
 const Game =  require('../models/game')
 const Student = require('../models/student')
-// TODO Get games played
+// DONE Get games played
 GamePlayRouter.get('/', (request, response, next) => {
     GamePlay.find({}).then(pg => {
-        console.log('All game splayed')
         response.json(pg)
     }).catch(err => next(err))
 })
-// TODO get one game played
+// DONE get one game played
 GamePlayRouter.get('/:id',async (request, response, next) =>{
     const gamePlay = await GamePlay.findById(request.params.id)
                             .populate("game")
-                            .populate({path:"participants", populate: {path:"player"}}) //populate the fields
+                            .populate("player") //populate the fields
     if (gamePlay){
         response.json(gamePlay)
     }else{
@@ -33,24 +32,27 @@ GamePlayRouter.post('/', async (request, response, next) => {
     console.log(game_available)
     const students_available = body.participants.map(p => student_ids.includes(p.player)).every(i => i===true)
     console.log(students_available)
-    
     if (game_available){ 
         if(students_available){
+            body.participants.forEach(async participant => {
             const gamePlay = new GamePlay({
                 game: body.game,
-                participants: body.participants
+                player: participant.player,
+                position:participant.position
             })
-            body.participants.forEach(async participant => {
-                const stu_part = await Student.findById(participant.player)
-                stu_part.game_plays = stu_part.game_plays.concat(gamePlay.id)
-                stu_part.save()
-            })
-            Game.findByIdAndUpdate(body.game,{played_status:true,game_play:gamePlay.id},{new:true})
-                .then(g => console.log('Game updated'))
-                .catch(err => next(err))
+            Game.findByIdAndUpdate(body.game,{played_status:true},{new:true})
+            .then(g => console.log('Game updated'))
+            .catch(err => next(err))
             gamePlay.save().then(gp => {
-                response.json(gp)
+                console.log('Participant saved')
             }).catch(err => next(err))
+        })
+        GamePlay.find()
+            .where('game').equals(body.game)
+            .then(gps => {
+                response.json(gps)
+            })
+            .catch(err => next(err))
         
         }else{
             response.json({message:'Students do not Exist'})
@@ -60,7 +62,7 @@ GamePlayRouter.post('/', async (request, response, next) => {
     }
 
 })
-// TODO Delete played Game
+// TODO Delete played // INFO Game can't delete one game
 GamePlayRouter.delete('/:id', (request, response, next) =>{
     GamePlay.findByIdAndDelete(request.params.id)
         .then(gp => {
@@ -72,7 +74,7 @@ GamePlayRouter.delete('/:id', (request, response, next) =>{
         })
         .catch(err => next(err))
 })
-// TODO Edit played game
+// TODO Edit played game // INFO  Can't edit one game
 GamePlayRouter.put('/:id', (request, response, next) =>{
     const body = request.body
     const editgameplay = {
@@ -85,5 +87,16 @@ GamePlayRouter.put('/:id', (request, response, next) =>{
         })
         .catch(err => next(err))
 })
-
+GamePlayRouter.delete('/', (request, response, next) =>{
+    GamePlay.find({})
+        .then(gameplays => {
+            gameplays.forEach(gameplay => {
+                GamePlay.findByIdAndDelete(gameplay.id)
+                    .then(sd => response.status(204))
+                    .catch(err => next(err))
+            })
+            response.json({message:'All Deleted'})
+        })
+        .catch(err => next(err))
+    })
 module.exports = GamePlayRouter

@@ -1,6 +1,7 @@
 const studentsRouter = require('express').Router()
 const Student = require('../models/student')
 const Game = require('../models/game')
+const GamePlay = require('../models/gameplay')
 
 // DONE Get all student details
 studentsRouter.get('/', (request, response, next) =>{
@@ -10,7 +11,7 @@ studentsRouter.get('/', (request, response, next) =>{
     }).catch(err => next(err))
 })
 
-// TODO Create a student 
+// DONE Create a student 
 // INFO To be deleted, not Required in production 
 studentsRouter.post('/',(request, response,next) => {
     const body = request.body
@@ -29,40 +30,58 @@ studentsRouter.post('/',(request, response,next) => {
         })
         .catch( err => next(err))
 })
-// TODO GEt one student details
+// DONE GEt one student details
 studentsRouter.get('/:id',(request, response,next) => {
     Student.findById(request.params.id)
-            .select({first_name:1, last_name:1})
-            .populate(
-                {
-                    path:'game_plays',
-                    populate:{
-                        path:'game',
-                        select:'game_name category',
-                    },
-                //    populate:{
-                //        path:'participants',
-                //        model:'GamesPlayed',
-                //        select:'position',
-                //        strictPopulate:false
-                //     } 
-                
-                })
         .then(student => {
             if(student){
-                console.log(student)
-                response.json(student)
+                GamePlay.find()
+                    .select('game position')
+                    .where('player').equals(request.params.id)
+                    .populate({
+                        path:'game',
+                        model: 'Game',
+                        select:'game_name category'
+                    }
+                    )
+                    .then(gp => {
+                        const nst = {
+                            id:student.id,
+                            first_name:student.first_name,
+                            last_name:student.last_name,
+                            other_name:student.other_name,
+                            dob:student.dob,
+                            house:student.house
+                            , games:gp}
+                        console.log(nst)
+                        response.json(nst)
+
+                    })
             }else {
                 response.status(404).end()
             }
         })
         .catch(err => next(err))
 })
+// INFO Delete user by ID, to be deleted in production
 studentsRouter.delete('/:id', (request, response,next) =>{
     Student.findByIdAndDelete(request.params.id)
         .then(student => response.status(204).end())
         .catch(err => next(err))
 })
 
+// INFO Delete all students, to be deleted in production
+studentsRouter.delete('/', (request, response, next) =>{
+    Student.find({})
+        .then(students => {
+            students.forEach(student => {
+                Student.findByIdAndDelete(student.id)
+                    .then(sd => response.status(204))
+                    .catch(err => next(err))
+            })
+            response.json({message:'All Deleted'})
+        })
+        .catch(err => next(err))
+})
 
 module.exports = studentsRouter

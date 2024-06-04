@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-// TODO better models with validation and referencing
+// DONE better models with validation and referencing
 
 const studentSchema = new mongoose.Schema({
     first_name: {
@@ -22,12 +22,6 @@ const studentSchema = new mongoose.Schema({
     house: {
         type: String,
     },
-    game_plays:[
-        {
-            type:mongoose.Schema.Types.ObjectId,
-            ref: 'GamesPlayed'
-        }
-    ]
 })
 
 studentSchema.set('toJSON',{

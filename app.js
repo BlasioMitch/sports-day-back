@@ -33,6 +33,6 @@ app.use('/api/games', gamesRouter)
 app.use('/api/gameplays', GamePlayRouter)
 
 app.use(middleware.unknownEndPoint)
-// app.use(middleware.errorHandler)
+app.use(middleware.errorHandler)
 
 module.exports =  app 

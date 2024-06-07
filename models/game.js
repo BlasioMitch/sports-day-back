@@ -21,7 +21,7 @@ const gameSchema = new mongoose.Schema({
     played_status: {
         type: Boolean,
         default: false,
-    }
+    },
 })
 
 gameSchema.set('toJSON',{

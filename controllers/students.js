@@ -4,11 +4,10 @@ const Game = require('../models/game')
 const GamePlay = require('../models/gameplay')
 
 // DONE Get all student details
-studentsRouter.get('/', (request, response, next) =>{
-    Student.find({}).then(students =>{
-        console.log('Students come...')
-        response.json(students)
-    }).catch(err => next(err))
+studentsRouter.get('/',  (request, response, next) =>{
+    Student.find({})
+        .then(students => response.json(students))
+        .catch(err =>next(err))
 })
 
 // DONE Create a student 

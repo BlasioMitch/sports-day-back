@@ -3,7 +3,9 @@ const Game = require('../models/game')
 const GamePlay = require('../models/gameplay')
 // DONE Get all Games
 gamesRouter.get('/',(request, response, next) =>{
-    Game.find({}).then(games => {
+    Game.find({})
+        .populate('players')
+        .then(games => {
         response.json(games)
     }).catch(err => next(err))
 })
@@ -47,7 +49,7 @@ gamesRouter.get('/:id', (request, response, next) => {
 
                         }
                         response.json(gpj)
-                    })
+                    }).catch(err => next(err))
             } else {
                 response.status(404).end()
             }

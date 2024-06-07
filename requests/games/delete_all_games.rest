@@ -1,1 +1,1 @@
-DELETE http://localhost:3001/api/games
+DELETE http://localhost:3001/games

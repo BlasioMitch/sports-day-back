@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "build:ui": "rm -rf dist && cd ../sports-day && npm run build && cp -r dist ../sports-day-back",
+    "back": "nodemon index.js",
+    "dev": "npm run build:ui && npm run back"
   },
   "keywords": [
     "sports",

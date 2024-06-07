@@ -2,18 +2,18 @@ POST http://localhost:3001/api/gameplays
 Content-Type: application/json
 
 {
-    "game":"665ead63f0567f03d2bc3f28",
+    "game":"66629976309d845f77fb7851",
     "participants": [
         {
-            "player":"665ecfd2cb67607a66d0b6d9",
+            "player":"665ecfb2cb67607a66d0b6d5",
             "position":1
         },
         {
-            "player":"665ecfa1cb67607a66d0b6d3",
+            "player":"665ecf8dcb67607a66d0b6d1",
             "position":4
         },
         {
-            "player":"665ecf8dcb67607a66d0b6d1",
+            "player":"665ecfd2cb67607a66d0b6d9",
             "position":3
         },
         {

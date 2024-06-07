@@ -4,7 +4,10 @@ const Game =  require('../models/game')
 const Student = require('../models/student')
 // DONE Get games played
 GamePlayRouter.get('/', (request, response, next) => {
-    GamePlay.find({}).then(pg => {
+    GamePlay.find({})
+        // .populate('game')
+        // .populate('player')
+        .then(pg => {
         response.json(pg)
     }).catch(err => next(err))
 })
@@ -34,19 +37,14 @@ GamePlayRouter.post('/', async (request, response, next) => {
     console.log(students_available)
     if (game_available){ 
         if(students_available){
-            body.participants.forEach(async participant => {
+            body.participants.forEach( participant => {
             const gamePlay = new GamePlay({
                 game: body.game,
                 player: participant.player,
                 position:participant.position
             })
-            Game.findByIdAndUpdate(body.game,{played_status:true},{new:true})
-            .then(g => console.log('Game updated'))
-            .catch(err => next(err))
-            gamePlay.save().then(gp => {
-                console.log('Participant saved')
-            }).catch(err => next(err))
-        })
+            gamePlay.save().then(() => console.log('saved')).catch(err => next(err))
+        }) 
         GamePlay.find()
             .where('game').equals(body.game)
             .then(gps => {

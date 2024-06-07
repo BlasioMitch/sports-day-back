@@ -1,1 +1,1 @@
-GET http://localhost:3001/api/gameplays
+GET http://localhost:3001/gameplays

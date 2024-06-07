@@ -1,8 +1,8 @@
-POST http://localhost:3001/api/games
+POST http://localhost:3001/games
 Content-Type: application/json
 
 {
-    "game_name":"Shotput",
+    "game_name":"400M Sprint",
     "category":"U15",
     "relay":false
 }

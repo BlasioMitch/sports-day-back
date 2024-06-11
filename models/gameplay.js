@@ -5,13 +5,18 @@ const gamesPlayedSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Game'
     },
-    player: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Student'
-    },
-    position: {
-        type: Number, min: 1, max: 4
-    }
+    players:[
+        {
+            player:{
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Student'
+            },
+            position: {
+                type: Number,
+                min:1, max:8
+            }
+        }
+    ]
 
 })
 

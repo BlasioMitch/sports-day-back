@@ -6,6 +6,14 @@ const GamePlay = require('../models/gameplay')
 // DONE Get all student details
 studentsRouter.get('/',  (request, response, next) =>{
     Student.find({})
+        .populate({
+            path:'games',
+            populate:{
+                path:'game',
+                model:'Game',
+                select:'game_name category relay played_status '
+            }
+        })
         .then(students => response.json(students))
         .catch(err =>next(err))
 })
@@ -20,7 +28,6 @@ studentsRouter.post('/',(request, response,next) => {
         other_name: body.other_name,
         dob: body.dob,
         house: body.house,
-
     })
  
     student.save()
@@ -32,34 +39,7 @@ studentsRouter.post('/',(request, response,next) => {
 // DONE GEt one student details
 studentsRouter.get('/:id',(request, response,next) => {
     Student.findById(request.params.id)
-        .then(student => {
-            if(student){
-                GamePlay.find()
-                    .select('game position')
-                    .where('player').equals(request.params.id)
-                    .populate({
-                        path:'game',
-                        model: 'Game',
-                        select:'game_name category'
-                    }
-                    )
-                    .then(gp => {
-                        const nst = {
-                            id:student.id,
-                            first_name:student.first_name,
-                            last_name:student.last_name,
-                            other_name:student.other_name,
-                            dob:student.dob,
-                            house:student.house
-                            , games:gp}
-                        console.log(nst)
-                        response.json(nst)
-
-                    })
-            }else {
-                response.status(404).end()
-            }
-        })
+        .then(student => response.json(student))
         .catch(err => next(err))
 })
 // INFO Delete user by ID, to be deleted in production

@@ -1,1 +1,1 @@
-GET http://localhost:3001/students/665ecfa1cb67607a66d0b6d3
+GET http://localhost:3001/students/665ecf76cb67607a66d0b6cf

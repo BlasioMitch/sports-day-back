@@ -22,12 +22,24 @@ const studentSchema = new mongoose.Schema({
     house: {
         type: String,
     },
+    games:[
+        {
+            game: {
+                type: mongoose.Schema.Types.ObjectId, 
+                ref:'Game'
+            },
+            position: {
+                type:  Number, min: 1, max:8
+            
+            }
+        }
+    ]
 })
 
 studentSchema.set('toJSON',{
     transform: (document, returnedStudent) =>{
         returnedStudent.id = returnedStudent._id.toString()
-        delete returnedStudent._id
+        // delete returnedStudent._id
         delete returnedStudent.__v
     }
 })

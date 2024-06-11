@@ -6,12 +6,12 @@ const requestLogger = (request, response, next) =>{
     next()
 }
 
-const unknownEndPoint = (error, request, response, next) =>{
+const unknownEndPoint = (request, response, next) =>{
     response.status(404).send({error:"Endpoint doesn't exist"})
 }
 
 // DONE Error Handler here
-const errorHandler = (request, response, next) => {
+const errorHandler = (error, request, response, next) => {
     if(error.name === 'CastError'){
         return response.status(400).send({error:'malformatted ID'})
 

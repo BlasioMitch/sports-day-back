@@ -22,12 +22,24 @@ const gameSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    players:[
+        {
+            player: {
+                type: mongoose.Schema.Types.ObjectId, 
+                ref:'Student'
+            },
+            position: {
+                type:  Number, min: 1, max:8
+            
+            }
+        }
+    ]
 })
 
 gameSchema.set('toJSON',{
     transform: (document, returnedGame) =>{
         returnedGame.id = returnedGame._id.toString()
-        delete returnedGame._id
+        // delete returnedGame._id
         delete returnedGame.__v
     }
 })

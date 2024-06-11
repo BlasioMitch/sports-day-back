@@ -4,10 +4,17 @@ const GamePlay = require('../models/gameplay')
 // DONE Get all Games
 gamesRouter.get('/',(request, response, next) =>{
     Game.find({})
-        .populate('players')
+        .populate({
+            path:'players',
+            populate:{
+                path:'player',
+                model:'Student',
+                select:'id first_name last_name other_name house dob'
+            }
+        })
         .then(games => {
-        response.json(games)
-    }).catch(err => next(err))
+            response.json(games)
+        }).catch(err => next(err))
 })
 
 // DONE Create a Game || Check for participants to edit the gamesplayed schema
@@ -18,7 +25,7 @@ gamesRouter.post('/', (request, response, next) =>{
         game_name: body.game_name,
         category: body.category,
         relay: body.relay,
-    })
+    }) 
     game.save()
         .then(savedGame => {
             response.json(savedGame)
@@ -31,25 +38,7 @@ gamesRouter.get('/:id', (request, response, next) => {
     Game.findById(request.params.id)
         .then(game =>{
             if (game){
-                GamePlay.find({})
-                    .select()
-                    .where('game').equals(request.params.id)
-                    .populate({
-                        path:'player',
-                        model:'Student',
-                        select:'first_name last_name other_name house'
-                    })
-                    .then(gp =>{
-                        const gpj = {
-                            game_name:game.game_name,
-                            relay:game.relay,
-                            category:game.category,
-                            category:game.status,
-                            players:gp
-
-                        }
-                        response.json(gpj)
-                    }).catch(err => next(err))
+                    response.json(game)
             } else {
                 response.status(404).end()
             }

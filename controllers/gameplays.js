@@ -43,7 +43,7 @@ GamePlayRouter.post('/', async (request, response, next) => {
                     $set:{played_status:true}
                 }
                 Game.findByIdAndUpdate(body.game,game_upd,{new:true})
-                    .then(g => console.log('Game updated ',g))
+                    .then(g => console.log('Game updated '))
                     .catch(err => next(err))
         }) 
         const gameplayo = new GamePlay({

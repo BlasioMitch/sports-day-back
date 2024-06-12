@@ -87,16 +87,9 @@ GamePlayRouter.put('/:id', (request, response, next) =>{
         .catch(err => next(err))
 })
 // TODO Delete All, INFO to be removed
-GamePlayRouter.delete('/', (request, response, next) =>{
-    GamePlay.find({})
-        .then(gameplays => {
-            gameplays.forEach(gameplay => {
-                GamePlay.findByIdAndDelete(gameplay.id)
-                    .then(sd => response.status(204))
-                    .catch(err => next(err))
-            })
-            response.json({message:'All Deleted'})
-        })
-        .catch(err => next(err))
-    })
+GamePlayRouter.delete('/', async (request, response, next) =>{
+    await GamePlay.deleteMany()
+    await Game.updateMany({}, {players:[],played_status:false}, {multi:true})
+    await Student.updateMany({},{games:[]},{multi:true})
+})
 module.exports = GamePlayRouter

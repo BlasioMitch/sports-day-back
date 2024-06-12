@@ -2,7 +2,7 @@ POST http://localhost:3001/gameplays
 Content-Type: application/json
 
 {
-    "game":"66629951309d845f77fb784d",
+    "game":"66629960309d845f77fb784f",
     "players": [
         {
             "player":"665ecfd2cb67607a66d0b6d9",

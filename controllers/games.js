@@ -1,6 +1,7 @@
 const gamesRouter = require('express').Router()
 const Game = require('../models/game')
 const GamePlay = require('../models/gameplay')
+const Student = require('../models/student')
 // DONE Get all Games
 gamesRouter.get('/',(request, response, next) =>{
     Game.find({})
@@ -65,12 +66,15 @@ gamesRouter.put('/:id',(request, response, next) =>{
 
 // TODO Delete one Game 
 // INFO Check if game was played
-gamesRouter.delete('/:id',(request, response,next) =>{
-    Game.findByIdAndDelete(request.params.id)
-        .then(() =>{
-            response.status(204).end()
-        })
-        .catch(err => next(err))
+gamesRouter.delete('/:id',async (request, response,next) =>{
+    await Game.findByIdAndDelete(request.params.id)
+    await Student.updateMany({
+        games:{game:request.params.id}
+    },{
+        $pull:{
+            games:{game:request.params.id}
+        }
+    }, {multi:true})
 })
 
 gamesRouter.delete('/', (request, response, next) => {

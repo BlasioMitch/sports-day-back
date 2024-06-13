@@ -17,7 +17,13 @@ const studentSchema = new mongoose.Schema({
         minLength: 3    },
     dob: {
         type: Date,
+        required:true,
         required: true
+    },
+    gender:{
+        type:String,
+        required:true,
+        enum:['Female','Male']
     },
     house: {
         type: String,

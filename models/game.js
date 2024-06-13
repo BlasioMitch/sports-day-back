@@ -18,6 +18,11 @@ const gameSchema = new mongoose.Schema({
         required: true
 
     },
+    gender: {
+        type: String,
+        required: true,
+        enum:['girls','boys']
+    },
     played_status: {
         type: Boolean,
         default: false,

@@ -26,6 +26,7 @@ gamesRouter.post('/', (request, response, next) =>{
         game_name: body.game_name,
         category: body.category,
         relay: body.relay,
+        gender:body.gender
     }) 
     game.save()
         .then(savedGame => {
@@ -37,6 +38,14 @@ gamesRouter.post('/', (request, response, next) =>{
 // DONE Get one Game details
 gamesRouter.get('/:id', (request, response, next) => {
     Game.findById(request.params.id)
+        .populate({
+            path:'players',
+            populate: {
+                path:'player',
+                model:'Student',
+                select:'id first_name last_name other_name house dob'
+            }
+        })
         .then(game =>{
             if (game){
                     response.json(game)
@@ -54,7 +63,8 @@ gamesRouter.put('/:id',(request, response, next) =>{
         game_name: body.game_name,
         category: body.category,
         relay: body.relay,
-        played_Status: body.played_status
+        played_Status: body.played_status,
+        gender:body.gender
     }
 
     Game.findByIdAndUpdate(request.params.id, game, {new:true})
@@ -67,14 +77,21 @@ gamesRouter.put('/:id',(request, response, next) =>{
 // TODO Delete one Game 
 // INFO Check if game was played
 gamesRouter.delete('/:id',async (request, response,next) =>{
+    const game = await findById(request.params.id)
     await Game.findByIdAndDelete(request.params.id)
-    await Student.updateMany({
-        games:{game:request.params.id}
-    },{
-        $pull:{
-            games:{game:request.params.id}
-        }
-    }, {multi:true})
+    if (game.played_status){
+
+        const students = await Student.find({
+            games:{ $elemMatch:{ game:request.params.id }}
+        })
+        students.forEach( async student => {
+            student.games = student.games.filter(game => game.id === request.params.id)
+            await student.save()
+        })
+        console.log('Deletion Finished')
+    }else {
+        console.log('No players recorded')
+    }
 })
 
 gamesRouter.delete('/', (request, response, next) => {

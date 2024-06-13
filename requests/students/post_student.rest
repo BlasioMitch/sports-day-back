@@ -1,11 +1,4 @@
 POST http://localhost:3001/students
 Content-Type: application/json
 
-{
-    "first_name": "Mukiibi",
-    "last_name": "Nsimbi",
-    "other_name": "Rogers",
-    "dob": "0208-06-30T21:32:44.000Z",
-    "house": "Earth"
-
-  }
+    {"first_name":"Emlyn","last_name":"Collum","other_name":"Annaliese","gender":"Female","house":"Earth","dob":"13/12/2013"},

@@ -45,15 +45,18 @@ GamePlayRouter.post('/', async (request, response, next) => {
                 Game.findByIdAndUpdate(body.game,game_upd,{new:true})
                     .then(g => console.log('Game updated '))
                     .catch(err => next(err))
-        }) 
+            }) 
         const gameplayo = new GamePlay({
             game: body.game,
             players:body.players
         })
         gameplayo.save()
-            .then(svgp => response.json(svgp))
+            .then(svgp => {
+                response.json(svgp)
+            })
             .catch(err => next(err))
-        }else{
+      
+    }else{
             response.json({message:'Students do not Exist'})
         }
     }else{

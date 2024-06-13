@@ -11,7 +11,7 @@ studentsRouter.get('/',  (request, response, next) =>{
             populate:{
                 path:'game',
                 model:'Game',
-                select:'game_name category relay played_status '
+                select:'game_name category relay played_status gender '
             }
         })
         .then(students => response.json(students))
@@ -27,6 +27,7 @@ studentsRouter.post('/',(request, response,next) => {
         last_name: body.last_name,
         other_name: body.other_name,
         dob: body.dob,
+        gender:body.gender,
         house: body.house,
     })
  
@@ -63,4 +64,12 @@ studentsRouter.delete('/', (request, response, next) =>{
         .catch(err => next(err))
 })
 
+// Post many students
+
+studentsRouter.post('/many', (request, response, next) =>{
+    Student.insertMany(request.body)
+        .then(sts => response.json(sts))
+        .catch(err => next(err))
+})
+ 
 module.exports = studentsRouter

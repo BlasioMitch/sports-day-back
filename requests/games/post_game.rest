@@ -2,7 +2,7 @@ POST http://localhost:3001/games
 Content-Type: application/json
 
 {
-    "game_name":"400M Sprint",
+    "game_name":"Discuss",
     "category":"U15",
     "relay":false
 }

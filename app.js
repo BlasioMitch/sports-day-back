@@ -27,9 +27,9 @@ app.use(express.static('dist'))
 app.use(express.json())
 app.use(middleware.requestLogger)
 
-app.use('/students', studentsRouter)
-app.use('/games', gamesRouter)
-app.use('/gameplays', GamePlayRouter)
+app.use('/api/students', studentsRouter)
+app.use('/api/games', gamesRouter)
+app.use('/api/gameplays', GamePlayRouter)
 
 app.use(middleware.unknownEndPoint)
 app.use(middleware.errorHandler)

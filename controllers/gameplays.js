@@ -33,7 +33,7 @@ GamePlayRouter.post('/', async (request, response, next) => {
     console.log(students_available)
     if (game_available){ 
         if(students_available){
-            body.players.forEach(async participant => {
+                body.players.forEach(async participant => {
                 const stu_gp = {game:body.game,position: participant.position}
                 let stu_upd = await Student.findById(participant.player)
                 stu_upd.games = stu_upd.games.concat(stu_gp)
@@ -45,17 +45,17 @@ GamePlayRouter.post('/', async (request, response, next) => {
                 Game.findByIdAndUpdate(body.game,game_upd,{new:true})
                     .then(g => console.log('Game updated '))
                     .catch(err => next(err))
-            }) 
-        const gameplayo = new GamePlay({
-            game: body.game,
-            players:body.players
-        })
-        gameplayo.save()
-            .then(svgp => {
-                response.json(svgp)
-            })
-            .catch(err => next(err))
-      
+                }) 
+                const gameplayo = new GamePlay({
+                    game: body.game,
+                    players:body.players
+                    })
+                gameplayo.save()
+                    .then(svgp => {
+                        response.json(svgp)
+                    })
+                    .catch(err => next(err))
+
     }else{
             response.json({message:'Students do not Exist'})
         }

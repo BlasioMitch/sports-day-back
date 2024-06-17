@@ -1,7 +1,18 @@
+const jwt = require('jsonwebtoken')
 const GamePlayRouter = require('express').Router()
 const GamePlay = require('../models/gameplay')
 const Game =  require('../models/game')
 const Student = require('../models/student')
+const User = require('../models/user')
+
+const getTokenFrom = request =>{
+    const authorization = request.get('authorization')
+    if(authorization && authorization.startsWith('Bearer')){
+        return authorization.replace('Bearer ','')
+    }
+   return null
+}
+
 // DONE Get games played
 GamePlayRouter.get('/', (request, response, next) => {
     GamePlay.find({})
@@ -22,46 +33,57 @@ GamePlayRouter.get('/:id',async (request, response, next) =>{
 // DONE change the played_status of game
 GamePlayRouter.post('/', async (request, response, next) => {
     const body = request.body
-    // DONE Check if IDs exist
-    const games = await Game.find({})
-    const game_ids = games.map(g => g.id)
-    const students = await Student.find({})
-    const student_ids = students.map(s => s.id)
-    const game_available = game_ids.includes(body.game)
-    console.log(game_available)
-    const students_available = body.players.map(p => student_ids.includes(p.player)).every(i => i===true)
-    console.log(students_available)
-    if (game_available){ 
-        if(students_available){
-                body.players.forEach(async participant => {
-                const stu_gp = {game:body.game,position: participant.position}
-                let stu_upd = await Student.findById(participant.player)
-                stu_upd.games = stu_upd.games.concat(stu_gp)
-                await stu_upd.save()
-                const game_upd = {
-                    $push:{players: {player:participant.player,position:participant.position}},
-                    $set:{played_status:true}
-                }
-                Game.findByIdAndUpdate(body.game,game_upd,{new:true})
+    // Check for authentication
+    const decodedToken = jwt.verify(getTokenFrom(request),process.env.SECRET)
+    if(!decodedToken.id){
+        return response.status(401).json({error:'token invalid'})
+    }
+    const user = await User.findById(decodedToken.id)
+    if(user.username !== 'guestuser'){
+        // DONE Check if IDs exist
+        const games = await Game.find({})
+        const game_ids = games.map(g => g.id)
+        const students = await Student.find({})
+        const student_ids = students.map(s => s.id)
+        const game_available = game_ids.includes(body.game)
+        console.log(game_available)
+        const students_available = body.players.map(p => student_ids.includes(p.player)).every(i => i===true)
+        console.log(students_available)
+        if (game_available){ 
+            if(students_available){
+                const stpr = body.players.forEach(async participant => {
+                    const stu_gp = {game:body.game,position: participant.position}
+                    let stu_upd = await Student.findById(participant.player)
+                    stu_upd.games = stu_upd.games.concat(stu_gp)
+                    await stu_upd.save()
+                    const game_upd = {
+                        $push:{players: {player:participant.player,position:participant.position}},
+                        $set:{played_status:true}
+                    }
+                    Game.findByIdAndUpdate(body.game,game_upd,{new:true})
                     .then(g => console.log('Game updated '))
                     .catch(err => next(err))
                 }) 
                 const gameplayo = new GamePlay({
                     game: body.game,
                     players:body.players
-                    })
-                gameplayo.save()
+                })
+                const gmpo = gameplayo.save()
                     .then(svgp => {
                         response.json(svgp)
                     })
                     .catch(err => next(err))
-
-    }else{
-            response.json({message:'Students do not Exist'})
-        }
+                    Promise.all([stpr,gmpo]).then(()=> console.log('All Done')).catch(err => next(err))
+                    
+                }else{
+                    response.json({message:'Students do not Exist'})
+                }
     }else{
         response.json({message:'Game does not Exist'})
     }
+}else{
+    return response.status(401).json({error:'Not authorized for this operation'})
+}
 
 })
 // TODO Delete played // INFO Game can't delete one game

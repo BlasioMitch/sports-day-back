@@ -1,11 +1,14 @@
 const studentsRouter = require('express').Router()
+const jwt = require('jsonwebtoken')
 const Student = require('../models/student')
 const Game = require('../models/game')
 const GamePlay = require('../models/gameplay')
+const User = require('../models/user')
+
 
 // DONE Get all student details
-studentsRouter.get('/',  (request, response, next) =>{
-    Student.find({})
+studentsRouter.get('/', async (request, response, next) =>{
+        Student.find({})
         .populate({
             path:'games',
             populate:{

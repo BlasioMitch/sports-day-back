@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+const config = require('../utils/config')
 const GamePlayRouter = require('express').Router()
 const GamePlay = require('../models/gameplay')
 const Game =  require('../models/game')
@@ -35,7 +36,7 @@ GamePlayRouter.post('/', async (request, response, next) => {
     const body = request.body
     try{
         // Check for authentication
-        const decodedToken = jwt.verify(getTokenFrom(request),process.env.SECRET)
+        const decodedToken = jwt.verify(getTokenFrom(request),config.SECRET)
         if(!decodedToken.id){
             return response.status(401).json({error:'token invalid'})
         }

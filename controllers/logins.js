@@ -3,6 +3,9 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/user')
 const UserRouter = require('express').Router()
 
+UserRouter.get('/login',(request, response, next) =>{
+    console.log('In login')
+})
 // Create User
 UserRouter.post('/users', async (request, response,next) =>{
     const saltRounds = 10

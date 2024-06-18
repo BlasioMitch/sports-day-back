@@ -14,7 +14,7 @@ studentsRouter.get('/', async (request, response, next) =>{
             populate:{
                 path:'game',
                 model:'Game',
-                select:'game_name category relay played_status gender '
+                select:'game_name category relay played_status gender player_no '
             }
         })
         .then(students => response.json(students))

@@ -43,7 +43,8 @@ gamesRouter.post('/', async (request, response, next) =>{
             game_name: body.game_name,
             category: body.category,
             relay: body.relay,
-            gender:body.gender
+            gender:body.gender,
+            player_no:body.player_no
         }) 
         game.save()
         .then(savedGame => {
@@ -84,7 +85,8 @@ gamesRouter.put('/:id',(request, response, next) =>{
         category: body.category,
         relay: body.relay,
         played_Status: body.played_status,
-        gender:body.gender
+        gender:body.gender,
+        player_no:body.player_no
     }
 
     Game.findByIdAndUpdate(request.params.id, game, {new:true})
@@ -97,33 +99,31 @@ gamesRouter.put('/:id',(request, response, next) =>{
 // TODO Delete one Game 
 // INFO Check if game was played
 gamesRouter.delete('/:id',async (request, response,next) =>{
-    const decodedToken = jwt.verify(getTokenFrom(request),process.env.SECRET)
-    if(!decodedToken.id){
-        return response.status(401).json({error:'token invalid'})
+    try{
+        const decodedToken = jwt.verify(getTokenFrom(request),process.env.SECRET)
+        if(!decodedToken.id){
+            return response.status(401).json({error:'token invalid'})
+        }
+        const user = await User.findById(decodedToken.id)
+        if(user.username !== 'guestuser'){
+            const students = await Student
+                                    .updateMany(
+                                        {games:{ $elemMatch:{ game: request.params.id}}},
+                                        {$pull:{ games: {game: request.params.id}}}
+                                    )
+            const game = await Game.findByIdAndDelete(request.params.id)
+                                    
+            Promise.all([students,game]).then(()=>{
+                console.log('Deletion Complete')
+                response.status(204).json({Message:"Done"})
+            }).catch(err => next(err))
+        }else{
+            return response.status(401).json({error:'Not Authorized for this operation'})
+        } 
+    } catch(err) {
+        console.log(err)
     }
-    const user = await User.findById(decodedToken.id)
-    if(user.username !== 'guestuser'){
-        Game.findById(request.params.id)
-        .then( async game =>{
-            await Game.findByIdAndDelete(request.params.id)
-            console.log(game)
-            if (game.played_status){
-                const students = await Student.find({
-                    games:{ $elemMatch:{ game:request.params.id }}
-                })
-                students.forEach( async student => {
-                    student.games = student.games.filter(game => game.id === request.params.id)
-                    await student.save()
-                })
-                console.log('Deletion Finished')
-            }else {
-                console.log('No players recorded')
-            }
-            response.status(204).send({message:'ok'})
-        }).catch(err => next(err))
-    }else{
-        return response.status(401).json({error:'Not authorized for this operation'})
-    }
+
 })
 // delete all games
 gamesRouter.delete('/', (request, response, next) => {

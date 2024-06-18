@@ -18,6 +18,10 @@ const gameSchema = new mongoose.Schema({
         required: true
 
     },
+    player_no: {
+        type: Number,
+        default:1
+    },
     gender: {
         type: String,
         required: true,

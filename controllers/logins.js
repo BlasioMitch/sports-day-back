@@ -6,6 +6,7 @@ const UserRouter = require('express').Router()
 
 UserRouter.get('/login',(request, response, next) =>{
     console.log('In login')
+    response.status(200).send({message:'OK'})
 })
 // Create User
 UserRouter.post('/users', async (request, response,next) =>{

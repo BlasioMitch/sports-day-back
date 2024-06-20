@@ -1,24 +1,46 @@
-POST http://localhost:3001/gameplays
+POST http://localhost:3001/api/gameplays
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJsYXNpbyIsImlkIjoiNjY2ZmZmZmVhNzc3YjBmZmQwNzVjZDdmIiwiaWF0IjoxNzE4NjIxODQxfQ.gEM_6_sssEs1OHMUd8WouOXG3ivSxu22rOCTfStOFcE
 
+# {
+#     "game":"6671771a4192bd17072b7673",
+#     "players": [
+#         {
+#             "player":"666ae4d56ca7bc36cd005986",
+#             "position":null
+#         },
+#         {
+#             "player":"666ae4d56ca7bc36cd005987",
+#             "position":null
+#         },
+#         {
+#             "player":"666ae4d56ca7bc36cd005988",
+#             "position":null
+#         },
+#         {
+#             "player":"666ae4d56ca7bc36cd005989",
+#             "position":null
+#         }
+#     ]
+# }
 {
-    "game":"666a9a4a2e10d3f239736994",
+    "game":"6671771a4192bd17072b7673",
     "players": [
         {
-            "player":"665ecfd2cb67607a66d0b6d9",
+            "player":"666ae4d56ca7bc36cd005986",
             "position":1
         },
         {
-            "player":"665ecfc2cb67607a66d0b6d7",
-            "position":4
+            "player":"666ae4d56ca7bc36cd005987",
+            "position":2
         },
         {
-            "player":"665ecf8dcb67607a66d0b6d1",
+            "player":"666ae4d56ca7bc36cd005988",
             "position":3
         },
         {
-            "player":"665ecfa1cb67607a66d0b6d3",
-            "position":2
+            "player":"666ae4d56ca7bc36cd005989",
+            "position":4
         }
     ]
 }

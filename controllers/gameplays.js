@@ -36,34 +36,65 @@ GamePlayRouter.post('/', async (request, response, next) => {
     const body = request.body
     try{
         // Check for authentication
-        const decodedToken = jwt.verify(getTokenFrom(request),config.SECRET)
-        if(!decodedToken.id){
-            return response.status(401).json({error:'token invalid'})
-        }
-        const user = await User.findById(decodedToken.id)
-        if(user.username !== 'guestuser'){
-            // Update Game: setting the arrray and play status
-            const game = await Game.findByIdAndUpdate(body.game,
+        // const decodedToken = jwt.verify(getTokenFrom(request),config.SECRET)
+        // if(!decodedToken.id){
+        //     return response.status(401).json({error:'token invalid'})
+        // }
+        // const user = await User.findById(decodedToken.id)
+        // if(user.username !== 'guestuser'){
+            const no_points = body.players.map(p => p.position).every(p => p === null)
+            console.log(no_points,' null')
+            if(no_points) { // If game not played yet .ie no points assigned
+
+                // Update Game: setting the arrray with null positions
+                const gameUpdate = await Game.findByIdAndUpdate(body.game,
                     {
                         $push: {players:body.players},
-                        $set:{played_status:true}
-                    }
-            )
-            // Update Students: pushing game and position to respective player
-            const forUpdate = body.players.forEach(async player => {
-                await Student.findByIdAndUpdate(player.player,
-                    {
-                        $push:{games: {game: body.game, position: player.position}}
                     }
                 )
-            })
-            Promise.all([game,forUpdate]).then(() => {
-                    response.json({message:'Done'})
+                // Update Students: pushing game and position to respective player
+                const forUpdate = body.players.forEach(async player => {
+                    await Student.findByIdAndUpdate(player.player,
+                        {
+                            $push:{games: {game: body.game, position: player.position}}
+                        }
+                    )
+                })
+                Promise.all([gameUpdate,forUpdate]).then(() => {
+                    response.json({message:'Registered'})
+                    console.log('Registration Done')
+                }).catch(err => next(err))
+            } else{
+                // Update game to have positions
+                const gameUpdel = await Game.findByIdAndUpdate(body.game,{$set:{players:[]}})
+                const gameUpdate = await Game.findByIdAndUpdate(body.game,
+                    {
+                        $push: {players:body.players},
+                        $set:{played_status:true} 
+                    })
+                // update students to have positions
+                const students = await Student // First delete previous object with nulls
+                                        .updateMany(
+                                            {games:{ $elemMatch:{ game: body.game}}},
+                                            {$pull:{ games: {game: body.game}}}
+                                        )
+                const forStUpdate = body.players.forEach(async player => { // Replace the new object with positions
+                    await Student.findByIdAndUpdate(player.player,
+                        {
+                            $push:{games: {game: body.game, position: player.position}}
+                        }
+                    )
+                })
+    
+                Promise.all([gameUpdel,gameUpdate,students,forStUpdate]).then(() => {
+                    response.json({message:'played'})
                     console.log('Playing Done')
                 }).catch(err => next(err))
-            }else{
-                return response.status(401).json({error:'Not authorized for this operation'})   
+
             }
+            // }else{
+            //     return response.status(401).json({error:'Not authorized for this operation'})   
+            // }
     }catch(err){
         console.log(err)
     }

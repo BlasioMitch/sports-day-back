@@ -39,19 +39,37 @@ gamesRouter.post('/', async (request, response, next) =>{
     }
     const user = await User.findById(decodedToken.id)
     if(user.username !== 'guestuser'){ //if not guestuser
+        if (body.category !== 'All'){
 
-        const game = new Game({
-            game_name: body.game_name,
-            category: body.category,
-            relay: body.relay,
-            gender:body.gender,
-            player_no:body.player_no
-        }) 
-        game.save()
-        .then(savedGame => {
-            response.json(savedGame)
-        })
-        .catch(err => next(err))
+            const game = new Game({
+                game_name: body.game_name,
+                category: body.category,
+                relay: body.relay,
+                gender:body.gender,
+                player_no:body.player_no
+            }) 
+            game.save()
+            .then(savedGame => {
+                response.json(savedGame)
+            })
+            .catch(err => next(err))
+        }else{
+            const categories = ["Under 13","13 & 14","15 & Above"]
+            categories.forEach(category =>{
+                const game = new Game({
+                    game_name: body.game_name,
+                    category: category,
+                    relay: body.relay,
+                    gender:body.gender,
+                    player_no:body.player_no
+                })
+                game.save()
+                .then(() => {
+                    console.log('game saved for ',category)
+                }).catch(err => next(err))
+            })
+            response.json({message:'Done'})
+        }
     }else{
         return response.status(401).json({error:'Not authorized for this operation'})
     }

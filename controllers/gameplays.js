@@ -45,6 +45,13 @@ GamePlayRouter.post('/', async (request, response, next) => {
             const no_points = body.players.map(p => p.position).every(p => p === null)
             console.log(no_points,' null')
             if(no_points) { // If game not played yet .ie no points assigned
+                // Delete the array of players first // to edit
+                const gameUpdel = await Game.findByIdAndUpdate(body.game,{$set:{players:[]}})
+                const students = await Student // First delete previous object with nulls
+                                        .updateMany(
+                                            {games:{ $elemMatch:{ game: body.game}}},
+                                            {$pull:{ games: {game: body.game}}}
+                                        )
 
                 // Update Game: setting the arrray with null positions
                 const gameUpdate = await Game.findByIdAndUpdate(body.game,
@@ -60,7 +67,7 @@ GamePlayRouter.post('/', async (request, response, next) => {
                         }
                     )
                 })
-                Promise.all([gameUpdate,forUpdate]).then(() => {
+                Promise.all([gameUpdel, students, gameUpdate,forUpdate]).then(() => {
                     response.json({message:'Registered'})
                     console.log('Registration Done')
                 }).catch(err => next(err))

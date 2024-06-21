@@ -33,12 +33,12 @@ gamesRouter.get('/', async (request, response, next) =>{
 gamesRouter.post('/', async (request, response, next) =>{
     const body = request.body
     // check for authentication
-    // const decodedToken = jwt.verify(getTokenFrom(request),config.SECRET)
-    // if(!decodedToken.id){
-    //     return response.status(401).json({error:'token invalid'})
-    // }
-    // const user = await User.findById(decodedToken.id)
-    // if(user.username !== 'guestuser'){ //if not guestuser
+    const decodedToken = jwt.verify(getTokenFrom(request),config.SECRET)
+    if(!decodedToken.id){
+        return response.status(401).json({error:'token invalid'})
+    }
+    const user = await User.findById(decodedToken.id)
+    if(user.username !== 'guestuser'){ //if not guestuser
 
         const game = new Game({
             game_name: body.game_name,
@@ -52,9 +52,9 @@ gamesRouter.post('/', async (request, response, next) =>{
             response.json(savedGame)
         })
         .catch(err => next(err))
-    // }else{
-    //     return response.status(401).json({error:'Not authorized for this operation'})
-    // }
+    }else{
+        return response.status(401).json({error:'Not authorized for this operation'})
+    }
 })
 
 // DONE Get one Game details
@@ -104,7 +104,7 @@ gamesRouter.delete('/:id',async (request, response,next) =>{
         const decodedToken = jwt.verify(getTokenFrom(request),config.SECRET)
         if(!decodedToken.id){
             return response.status(401).json({error:'token invalid'})
-        }
+        } 
         const user = await User.findById(decodedToken.id)
         if(user.username !== 'guestuser'){
             const students = await Student

@@ -36,12 +36,12 @@ GamePlayRouter.post('/', async (request, response, next) => {
     const body = request.body
     try{
         // Check for authentication
-        // const decodedToken = jwt.verify(getTokenFrom(request),config.SECRET)
-        // if(!decodedToken.id){
-        //     return response.status(401).json({error:'token invalid'})
-        // }
-        // const user = await User.findById(decodedToken.id)
-        // if(user.username !== 'guestuser'){
+        const decodedToken = jwt.verify(getTokenFrom(request),config.SECRET)
+        if(!decodedToken.id){
+            return response.status(401).json({error:'token invalid'})
+        }
+        const user = await User.findById(decodedToken.id)
+        if(user.username !== 'guestuser'){
             const no_points = body.players.map(p => p.position).every(p => p === null)
             console.log(no_points,' null')
             if(no_points) { // If game not played yet .ie no points assigned
@@ -92,9 +92,9 @@ GamePlayRouter.post('/', async (request, response, next) => {
                 }).catch(err => next(err))
 
             }
-            // }else{
-            //     return response.status(401).json({error:'Not authorized for this operation'})   
-            // }
+            }else{
+                return response.status(401).json({error:'Not authorized for this operation'})   
+            }
     }catch(err){
         console.log(err)
     }

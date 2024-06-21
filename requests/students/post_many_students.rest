@@ -1,55 +1,2320 @@
 POST http://localhost:3001/api/students/many
 Content-Type: application/json
 
-# {
-    [
-    {"first_name":"Aluino","last_name":"Segge","other_name":"Ermanno","gender":"Male","house":"Water","dob":"07/15/2013"},
-    {"first_name":"Malva","last_name":"Birkenhead","other_name":"Ailyn","gender":"Female","house":"Fire","dob":"06/20/2020"},
-    {"first_name":"Lucius","last_name":"Wadforth","other_name":"Kareem","gender":"Male","house":"Water","dob":"12/13/2010"},
-    {"first_name":"Humfrid","last_name":"Antunes","other_name":"Delbert","gender":"Male","house":"Fire","dob":"03/30/2023"},
-    {"first_name":"Leonanie","last_name":"Ambrodi","other_name":"Gus","gender":"Female","house":"Wind","dob":"04/16/2007"},
-    {"first_name":"Paulita","last_name":"Durston","other_name":"Terrye","gender":"Female","house":"Fire","dob":"01/10/2017"},
-    {"first_name":"Flint","last_name":"Layman","other_name":"Brocky","gender":"Male","house":"Water","dob":"12/15/2008"},
-    {"first_name":"Kermie","last_name":"Kybert","other_name":"Norbie","gender":"Male","house":"Earth","dob":"06/12/2010"},
-    {"first_name":"Raynor","last_name":"Writer","other_name":"Caddric","gender":"Male","house":"Fire","dob":"10/04/2019"},
-    {"first_name":"Kylila","last_name":"Karppi","other_name":"Vally","gender":"Female","house":"Water","dob":"02/10/2015"},
-    {"first_name":"Wilma","last_name":"Goathrop","other_name":"Gwyneth","gender":"Female","house":"Earth","dob":"06/30/2009"},
-    {"first_name":"Sherwood","last_name":"De la Eglise","other_name":"Iago","gender":"Male","house":"Fire","dob":"03/08/2010"},
-    {"first_name":"Cart","last_name":"Gillivrie","other_name":"Murvyn","gender":"Male","house":"Earth","dob":"10/28/2022"},
-    {"first_name":"Emlyn","last_name":"Collum","other_name":"Annaliese","gender":"Female","house":"Earth","dob":"12/13/2013"},
-    {"first_name":"Britta","last_name":"Adolf","other_name":"Claretta","gender":"Female","house":"Earth","dob":"12/27/2019"},
-    {"first_name":"Kalli","last_name":"Gun","other_name":"Kim","gender":"Female","house":"Wind","dob":"08/18/2014"},
-    {"first_name":"Andrus","last_name":"Iacovazzi","gender":"Male","house":"Water","dob":"01/17/2019"},
-    {"first_name":"Marianna","last_name":"Smithson","other_name":"Mirella","gender":"Female","house":"Wind","dob":"02/25/2023"},
-    {"first_name":"Eberto","last_name":"Farlamb","other_name":"Gram","gender":"Male","house":"Wind","dob":"05/27/2005"},
-    {"first_name":"Sharona","last_name":"Domney","other_name":"Alica","gender":"Female","house":"Fire","dob":"11/07/2014"},
-    {"first_name":"Penn","last_name":"Mockford","other_name":"Lauren","gender":"Male","house":"Earth","dob":"12/14/2021"},
-    {"first_name":"Jorie","last_name":"Husset","other_name":"Noami","gender":"Female","house":"Fire","dob":"11/21/2008"},
-    {"first_name":"Noellyn","last_name":"Beastall","other_name":"Lauren","gender":"Female","house":"Water","dob":"11/13/2006"},
-    {"first_name":"Bobby","last_name":"Michell","gender":"Male","house":"Earth","dob":"01/21/2011"},
-    {"first_name":"Roseanna","last_name":"Bourgourd","other_name":"Idette","gender":"Female","house":"Wind","dob":"09/16/2010"},
-    {"first_name":"Mano","last_name":"Bigland","other_name":"Hercules","gender":"Male","house":"Fire","dob":"09/08/2011"},
-    {"first_name":"Thain","last_name":"enzley","gender":"Male","house":"Earth","dob":"12/19/2006"},
-    {"first_name":"Isis","last_name":"de Mullett","other_name":"Nollie","gender":"Female","house":"Wind","dob":"10/07/2011"},
-    {"first_name":"Paco","last_name":"Lacasa","other_name":"Joe","gender":"Male","house":"Earth","dob":"11/08/2014"},
-    {"first_name":"Teddi","last_name":"Springell","other_name":"Jaclyn","gender":"Female","house":"Fire","dob":"09/06/2010"},
-    {"first_name":"Sidney","last_name":"Wilsher","other_name":"Zelig","gender":"Male","house":"Earth","dob":"01/18/2021"},
-    {"first_name":"Putnam","last_name":"Feaks","gender":"Male","house":"Wind","dob":"02/02/2006"},
-    {"first_name":"Domingo","last_name":"Prentice","other_name":"Desmund","gender":"Male","house":"Wind","dob":"05/21/2015"},
-    {"first_name":"La verne","last_name":"McKie","other_name":"Roslyn","gender":"Female","house":"Water","dob":"06/15/2013"},
-    {"first_name":"Pen","last_name":"Skeldon","other_name":"Veda","gender":"Female","house":"Wind","dob":"06/27/2020"},
-    {"first_name":"Darelle","last_name":"Escalero","other_name":"Estelle","gender":"Female","house":"Fire","dob":"08/11/2011"},
-    {"first_name":"Brenna","last_name":"Aishford","gender":"Female","house":"Water","dob":"03/14/2008"},
-    {"first_name":"Joan","last_name":"Hargey","other_name":"Milly","gender":"Female","house":"Earth","dob":"04/29/2008"},
-    {"first_name":"Calhoun","last_name":"Wildes","gender":"Male","house":"Wind","dob":"08/31/2009"},
-    {"first_name":"Cirilo","last_name":"Lambis","other_name":"Konstantin","gender":"Male","house":"Wind","dob":"03/28/2021"},
-    {"first_name":"Jimmie","last_name":"Yerrington","other_name":"Andreas","gender":"Male","house":"Fire","dob":"09/15/2014"},
-    {"first_name":"Garvey","last_name":"Auckland","gender":"Male","house":"Fire","dob":"08/12/2019"},
-    {"first_name":"Ibbie","last_name":"Brommage","other_name":"Gillan","gender":"Female","house":"Water","dob":"12/07/2010"},
-    {"first_name":"Axel","last_name":"Zwicker","other_name":"Aldon","gender":"Male","house":"Earth","dob":"02/22/2009"},
-    {"first_name":"Koenraad","last_name":"Brocklesby","other_name":"Chase","gender":"Male","house":"Earth","dob":"02/04/2009"},
-    {"first_name":"Field","last_name":"Hissie","other_name":"Jarvis","gender":"Male","house":"Wind","dob":"09/15/2023"},
-    {"first_name":"Garth","last_name":"Regina","other_name":"Hermy","gender":"Male","house":"Wind","dob":"09/30/2009"},
-    {"first_name":"Powell","last_name":"Shears","other_name":"Lazare","gender":"Male","house":"Water","dob":"08/13/2020"},
-    {"first_name":"Tanhya","last_name":"Handscombe","other_name":"Mickie","gender":"Female","house":"Earth","dob":"06/09/2021"},
-    {"first_name":"Delmar","last_name":"Tuft","other_name":"Curry","gender":"Male","house":"Wind","dob":"05/27/2017"}]
+[
+ {
+   "first_name": "Abigail",
+   "last_name": "Shanell",
+   "other_name": "Lanyero",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "08/11/2011"
+ },
+ {
+   "first_name": "Abigail",
+   "last_name": "Mulungi",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "12/14/2011"
+ },
+ {
+   "first_name": "Romano",
+   "last_name": "Deogracious",
+   "other_name": "Nkolo",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "08/28/2011"
+ },
+ {
+   "first_name": "Keira",
+   "last_name": "Genesis",
+   "other_name": "Kirabo",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "10/14/2011"
+ },
+ {
+   "first_name": "Bezalel",
+   "last_name": "Ainomugisha",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "06/24/2012"
+ },
+ {
+   "first_name": "Aiden",
+   "last_name": "Akubu",
+   "other_name": "Immelman",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "02/06/2012"
+ },
+ {
+   "first_name": "Arthur",
+   "last_name": "Jacob",
+   "other_name": "Kazibwe Makanga",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "01/16/2012"
+ },
+ {
+   "first_name": "Avalon",
+   "last_name": "Hader",
+   "other_name": "Preman Mutesasira",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "06/10/2011"
+ },
+ {
+   "first_name": "Ethan",
+   "last_name": "Mbanza",
+   "other_name": "Ntwali",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "04/27/2011"
+ },
+ {
+   "first_name": "Zhanna",
+   "last_name": "A. Wanok",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "12/29/2011"
+ },
+ {
+   "first_name": "Monzer",
+   "last_name": "Tarig",
+   "other_name": "Mohamedelkhier Seedahmed",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "02/14/2011"
+ },
+ {
+   "first_name": "Azriel",
+   "last_name": "Godson",
+   "other_name": "Ayinza",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "02/26/2012"
+ },
+ {
+   "first_name": "Ampaire",
+   "last_name": "Jayson",
+   "other_name": "Aronda",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "12/12/2011"
+ },
+ {
+   "first_name": "Imani",
+   "last_name": "Itungo",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "12/05/2011"
+ },
+ {
+   "first_name": "Sean",
+   "last_name": "Mark",
+   "other_name": "Massa Mwesigwa",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "04/05/2012"
+ },
+ {
+   "first_name": "Abaho",
+   "last_name": "Ade",
+   "other_name": "Iyera Nshimye",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "06/29/2011"
+ },
+ {
+   "first_name": "Declan",
+   "last_name": "Barungi",
+   "other_name": "Katwebaze",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "07/10/2012"
+ },
+ {
+   "first_name": "Amir",
+   "last_name": "Khalil",
+   "other_name": "Matte",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "06/25/2009"
+ },
+ {
+   "first_name": "Eleaza",
+   "last_name": "Spencer",
+   "other_name": "Mugisha",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "03/15/2011"
+ },
+ {
+   "first_name": "Francis",
+   "last_name": "Musajjaawaza",
+   "other_name": "Bakkabulindi",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "09/15/2010"
+ },
+ {
+   "first_name": "Isaiah",
+   "last_name": "Byaruhanga",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "03/01/2010"
+ },
+ {
+   "first_name": "Abigail",
+   "last_name": "Kauma",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "02/17/2011"
+ },
+ {
+   "first_name": "Gideon",
+   "last_name": "Murungi",
+   "other_name": "Jasi",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "01/13/2011"
+ },
+ {
+   "first_name": "Gabriel",
+   "last_name": "Mubiru",
+   "other_name": "Mikisa",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "08/10/2011"
+ },
+ {
+   "first_name": "Niel",
+   "last_name": "Tendo",
+   "other_name": "Ssali",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "12/11/2008"
+ },
+ {
+   "first_name": "Sydney",
+   "last_name": "Etor",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "10/06/2010"
+ },
+ {
+   "first_name": "Alma",
+   "last_name": "Angella",
+   "other_name": "Businge",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "04/20/2011"
+ },
+ {
+   "first_name": "Arianna",
+   "last_name": "Kirabo",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "04/09/2010"
+ },
+ {
+   "first_name": "Jason",
+   "last_name": "Lamar",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "12/31/2010"
+ },
+ {
+   "first_name": "Laloyo",
+   "last_name": "Nissi",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "06/13/2011"
+ },
+ {
+   "first_name": "Joshua",
+   "last_name": "Mulungi",
+   "other_name": "Mubiru",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "10/29/2012"
+ },
+ {
+   "first_name": "Samora",
+   "last_name": "Ethelred",
+   "other_name": "Lukwago",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "11/22/2011"
+ },
+ {
+   "first_name": "Jemimah",
+   "last_name": "Kisakye",
+   "other_name": "Mutesi",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "01/21/2011"
+ },
+ {
+   "first_name": "Ethan",
+   "last_name": "Ainebyona",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "12/23/2009"
+ },
+ {
+   "first_name": "Nadine",
+   "last_name": "Mbabazi",
+   "other_name": "Bakashaba",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "03/18/2010"
+ },
+ {
+   "first_name": "Kieran",
+   "last_name": "Ochola",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "10/12/2009"
+ },
+ {
+   "first_name": "Hunter",
+   "last_name": "Tumusiime",
+   "other_name": "Alinda",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "06/23/2010"
+ },
+ {
+   "first_name": "Kenan",
+   "last_name": "Atuhaire",
+   "other_name": "Katwebaze",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "08/20/2010"
+ },
+ {
+   "first_name": "Micah",
+   "last_name": "Reign",
+   "other_name": "Tusiime",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "10/22/2009"
+ },
+ {
+   "first_name": "Deborah",
+   "last_name": "Ategeka",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "12/03/2008"
+ },
+ {
+   "first_name": "Jason",
+   "last_name": "Kirabo",
+   "other_name": "Kaiso",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "07/30/2009"
+ },
+ {
+   "first_name": "Aretha",
+   "last_name": "Kavulu",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "12/04/2010"
+ },
+ {
+   "first_name": "Miriam",
+   "last_name": "Namalea",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "07/30/2008"
+ },
+ {
+   "first_name": "Ianna",
+   "last_name": "Marion",
+   "other_name": "Nankunda",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "02/17/2010"
+ },
+ {
+   "first_name": "Iona",
+   "last_name": "Asyanut",
+   "other_name": "Wanok",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "02/13/2009"
+ },
+ {
+   "first_name": "Geraldine",
+   "last_name": "Namubiru",
+   "other_name": "Siima",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "12/18/2008"
+ },
+ {
+   "first_name": "Ella",
+   "last_name": "Matanda",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "03/31/2010"
+ },
+ {
+   "first_name": "Solange",
+   "last_name": "Namuwendo",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "05/25/2010"
+ },
+ {
+   "first_name": "Ryan",
+   "last_name": "Mwinga",
+   "other_name": "Saha",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "05/01/2010"
+ },
+ {
+   "first_name": "Christian",
+   "last_name": "Ankunda",
+   "other_name": "Muzahura",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "01/10/2009"
+ },
+ {
+   "first_name": "Amaris",
+   "last_name": "Asher",
+   "other_name": "Tabusibwa",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "09/22/2009"
+ },
+ {
+   "first_name": "Joshua",
+   "last_name": "Mugerwa",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "04/15/2009"
+ },
+ {
+   "first_name": "Ethan",
+   "last_name": "Jabari",
+   "other_name": "Barrak",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "04/01/2010"
+ },
+ {
+   "first_name": "Shillor",
+   "last_name": "Abraham",
+   "other_name": "Bashirizi Rutaroh",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "03/26/2010"
+ },
+ {
+   "first_name": "Akur",
+   "last_name": "Chol",
+   "other_name": "Dau",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "05/10/2010"
+ },
+ {
+   "first_name": "Ruella",
+   "last_name": "Abulo",
+   "other_name": "Edopu",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "09/23/2009"
+ },
+ {
+   "first_name": "Davina",
+   "last_name": "Mirembe",
+   "other_name": "Nsibambi",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "05/07/2008"
+ },
+ {
+   "first_name": "Abigail",
+   "last_name": "Kanshetsya",
+   "other_name": "Bigirwa",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "04/06/2009"
+ },
+ {
+   "first_name": "Matthew",
+   "last_name": "Ssali",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "02/12/2008"
+ },
+ {
+   "first_name": "Aliyah",
+   "last_name": "Amin",
+   "other_name": "Osman Abdelmoula",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "06/02/2008"
+ },
+ {
+   "first_name": "Anne",
+   "last_name": "Loretta",
+   "other_name": "Namiiro",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "04/28/2007"
+ },
+ {
+   "first_name": "Noreen",
+   "last_name": "Kusasira",
+   "other_name": "Muyinza",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "09/25/2006"
+ },
+ {
+   "first_name": "Ingrid",
+   "last_name": "Julia",
+   "other_name": "Apolot",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "11/01/2006"
+ },
+ {
+   "first_name": "Geraldine",
+   "last_name": "Balubuliza",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "06/12/2008"
+ },
+ {
+   "first_name": "Joel",
+   "last_name": "Christie",
+   "other_name": "Nadiope",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "01/16/2007"
+ },
+ {
+   "first_name": "Christina",
+   "last_name": "Ssuubi",
+   "other_name": "Nsibambi",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "10/09/2006"
+ },
+ {
+   "first_name": "Barbara",
+   "last_name": "Atusasiire",
+   "other_name": "Nowembabazi",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "05/13/2006"
+ },
+ {
+   "first_name": "Alec",
+   "last_name": "Muzoora",
+   "other_name": "Bigirwa",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "07/16/2007"
+ },
+ {
+   "first_name": "Aniela",
+   "last_name": "Elizabeth",
+   "other_name": "Mwende",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "08/19/2007"
+ },
+ {
+   "first_name": "Tara",
+   "last_name": "Nyatia",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "01/10/2007"
+ },
+ {
+   "first_name": "Alicia",
+   "last_name": "Tusubira",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "08/19/2006"
+ },
+ {
+   "first_name": "Benjamin",
+   "last_name": "Ongom",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "04/03/2007"
+ },
+ {
+   "first_name": "Alysha",
+   "last_name": "Kajoba",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "05/30/2008"
+ },
+ {
+   "first_name": "Philip",
+   "last_name": "Bangirana",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "05/24/2005"
+ },
+ {
+   "first_name": "Martina",
+   "last_name": "Busingye",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "06/12/2005"
+ },
+ {
+   "first_name": "Nicole",
+   "last_name": "Mukisa",
+   "other_name": "Mwebaza",
+   "gender": "Female",
+   "house": "Earth",
+   "dob": "07/07/2004"
+ },
+ {
+   "first_name": "Jeremiah",
+   "last_name": "Mutiibwa",
+   "gender": "Male",
+   "house": "Earth",
+   "dob": "03/22/2006"
+ },
+ {
+   "first_name": "Amani",
+   "last_name": "Agaba",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "01/03/2011"
+ },
+ {
+   "first_name": "Charity",
+   "last_name": "Eliana",
+   "other_name": "Muhanguzi",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "01/14/2012"
+ },
+ {
+   "first_name": "Chessman",
+   "last_name": "Daniel",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "03/07/2012"
+ },
+ {
+   "first_name": "Callista",
+   "last_name": "Edeline",
+   "other_name": "Asiimwe",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "03/10/2012"
+ },
+ {
+   "first_name": "Matthew",
+   "last_name": "Sengendo",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "02/20/2011"
+ },
+ {
+   "first_name": "Mellisa",
+   "last_name": "Tuheirwe",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "01/30/2012"
+ },
+ {
+   "first_name": "Sophia",
+   "last_name": "Ayebare",
+   "other_name": "Byamugisha",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "11/04/2012"
+ },
+ {
+   "first_name": "Natalie",
+   "last_name": "Grace",
+   "other_name": "Byarugaba",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "12/15/2011"
+ },
+ {
+   "first_name": "Junaid",
+   "last_name": "Mohamed",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "04/13/2011"
+ },
+ {
+   "first_name": "Bianca",
+   "last_name": "Yelena",
+   "other_name": "Sanyu Nagemi",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "12/12/2011"
+ },
+ {
+   "first_name": "Ella",
+   "last_name": "Kerangi",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "03/26/2011"
+ },
+ {
+   "first_name": "Morris",
+   "last_name": "Karamagi",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "01/06/2011"
+ },
+ {
+   "first_name": "Ntate",
+   "last_name": "Heaven",
+   "other_name": "Leonah",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "02/26/2012"
+ },
+ {
+   "first_name": "Clive",
+   "last_name": "Mitanda",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "10/05/2006"
+ },
+ {
+   "first_name": "Daniella",
+   "last_name": "Mukwaya",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "11/04/2011"
+ },
+ {
+   "first_name": "Samuel",
+   "last_name": "Masembe",
+   "other_name": "Sendawula",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "11/27/2011"
+ },
+ {
+   "first_name": "Joshua",
+   "last_name": "Mwesigwa",
+   "other_name": "Mugisha",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "09/26/2012"
+ },
+ {
+   "first_name": "Komuntale",
+   "last_name": "Kanganzi",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "10/25/2011"
+ },
+ {
+   "first_name": "Skylar",
+   "last_name": "Nowe",
+   "other_name": "Kamara",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "02/02/2012"
+ },
+ {
+   "first_name": "Nadine",
+   "last_name": "Esther",
+   "other_name": "Byarugaba",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "12/15/2011"
+ },
+ {
+   "first_name": "Aamirah",
+   "last_name": "Kasule",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "08/28/2011"
+ },
+ {
+   "first_name": "Eyad",
+   "last_name": "Fathelrahman",
+   "other_name": "Eltayeb",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "09/16/2010"
+ },
+ {
+   "first_name": "Lincoln",
+   "last_name": "Agaba",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "01/18/2011"
+ },
+ {
+   "first_name": "Isabella",
+   "last_name": "Bernadette",
+   "other_name": "Marklyn Oloya Apakurwot",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "10/14/2010"
+ },
+ {
+   "first_name": "Davin",
+   "last_name": "Kavuma",
+   "other_name": "Kizza",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "11/01/2011"
+ },
+ {
+   "first_name": "Destine",
+   "last_name": "Lukoda",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "09/28/2011"
+ },
+ {
+   "first_name": "Genevieve",
+   "last_name": "Murungi",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "05/17/2011"
+ },
+ {
+   "first_name": "Andrea",
+   "last_name": "Regina",
+   "other_name": "Nansamba",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "12/15/2010"
+ },
+ {
+   "first_name": "Lemuel",
+   "last_name": "Mutabazi",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "05/27/2011"
+ },
+ {
+   "first_name": "Jethro",
+   "last_name": "Miguel",
+   "other_name": "Manzi",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "08/28/2009"
+ },
+ {
+   "first_name": "Valarie",
+   "last_name": "Keza",
+   "other_name": "Karemera",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "11/29/2009"
+ },
+ {
+   "first_name": "Regina",
+   "last_name": "Kirabo",
+   "other_name": "Kaabunga",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "05/27/2011"
+ },
+ {
+   "first_name": "Michael",
+   "last_name": "Moro",
+   "other_name": "Kirabo",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "11/29/2010"
+ },
+ {
+   "first_name": "Danielle",
+   "last_name": "Hadassah",
+   "other_name": "Semakula",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "05/07/2011"
+ },
+ {
+   "first_name": "Jovin",
+   "last_name": "Benedict",
+   "other_name": "Wandera",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "04/04/2010"
+ },
+ {
+   "first_name": "Kirstyn",
+   "last_name": "Ethel",
+   "other_name": "Asiimwe",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "09/20/2010"
+ },
+ {
+   "first_name": "Benicio",
+   "last_name": "Bezalel",
+   "other_name": "Katende",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "07/11/2010"
+ },
+ {
+   "first_name": "Droy",
+   "last_name": "Nsiyona",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "08/22/2010"
+ },
+ {
+   "first_name": "Stephanie",
+   "last_name": "Nabagesera",
+   "other_name": "Sendawula",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "08/10/2010"
+ },
+ {
+   "first_name": "Natalia",
+   "last_name": "Atuheire",
+   "other_name": "Katarikawe",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "02/20/2009"
+ },
+ {
+   "first_name": "Caleb",
+   "last_name": "Ferry",
+   "other_name": "Muhanguzi",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "02/19/2010"
+ },
+ {
+   "first_name": "Shalem",
+   "last_name": "Noel",
+   "other_name": "Emorut Odea",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "12/26/2009"
+ },
+ {
+   "first_name": "Awab",
+   "last_name": "Ahmad",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "07/29/2010"
+ },
+ {
+   "first_name": "Mercy",
+   "last_name": "Biyinzika",
+   "other_name": "Nanyunja",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "09/09/2007"
+ },
+ {
+   "first_name": "Ngonzi",
+   "last_name": "Byanjeru",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "11/30/2009"
+ },
+ {
+   "first_name": "Keza",
+   "last_name": "Karamagi",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "09/30/2009"
+ },
+ {
+   "first_name": "Danelle",
+   "last_name": "Elizabeth",
+   "other_name": "Kawalya",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "07/14/2011"
+ },
+ {
+   "first_name": "Jenine",
+   "last_name": "Ssubi",
+   "other_name": "Kimbe",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "06/24/2010"
+ },
+ {
+   "first_name": "Melvin",
+   "last_name": "Tayebwa",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "03/01/2010"
+ },
+ {
+   "first_name": "Lemuel",
+   "last_name": "Gabriel",
+   "other_name": "Kiwuwa",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "01/12/2009"
+ },
+ {
+   "first_name": "Gabriel",
+   "last_name": "Bodman",
+   "other_name": "Kirabo",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "09/18/2009"
+ },
+ {
+   "first_name": "Desire",
+   "last_name": "Timothy",
+   "other_name": "Ssemwogerere",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "03/06/2010"
+ },
+ {
+   "first_name": "Nkwanzi",
+   "last_name": "Kansiime",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "06/25/2008"
+ },
+ {
+   "first_name": "Jethro",
+   "last_name": "Eryakim",
+   "other_name": "Ogwal",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "06/06/2008"
+ },
+ {
+   "first_name": "Davis",
+   "last_name": "Kato",
+   "other_name": "Ssebuufu",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "04/09/2008"
+ },
+ {
+   "first_name": "George",
+   "last_name": "Williams",
+   "other_name": "Mukasa",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "04/20/2008"
+ },
+ {
+   "first_name": "Iyanna",
+   "last_name": "Mutyaba",
+   "other_name": "Mulinde",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "03/27/2009"
+ },
+ {
+   "first_name": "Jewel",
+   "last_name": "Kisakye",
+   "other_name": "Kimbe",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "10/05/2008"
+ },
+ {
+   "first_name": "Amber",
+   "last_name": "Martha",
+   "other_name": "Nalwanga",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "06/22/2008"
+ },
+ {
+   "first_name": "Darren",
+   "last_name": "Wasswa",
+   "other_name": "Ssemujju",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "04/09/2008"
+ },
+ {
+   "first_name": "Calvin",
+   "last_name": "Musaazi",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "02/05/2008"
+ },
+ {
+   "first_name": "Malaika",
+   "last_name": "Umwiza",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "05/03/2008"
+ },
+ {
+   "first_name": "Sajida",
+   "last_name": "Ahmed",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "08/18/2008"
+ },
+ {
+   "first_name": "Amy",
+   "last_name": "Louise",
+   "other_name": "Nabulya Kisekulo",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "09/14/2008"
+ },
+ {
+   "first_name": "Belicia",
+   "last_name": "Brielle",
+   "other_name": "Katende",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "10/10/2008"
+ },
+ {
+   "first_name": "Nevin",
+   "last_name": "Patrick",
+   "other_name": "Kirono Irungu",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "03/20/2009"
+ },
+ {
+   "first_name": "Grace",
+   "last_name": "Pearl",
+   "other_name": "Agaba",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "12/28/2003"
+ },
+ {
+   "first_name": "Edward",
+   "last_name": "Abaine",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "12/09/2007"
+ },
+ {
+   "first_name": "Natasha",
+   "last_name": "Anne",
+   "other_name": "Wanjiku Irungu",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "11/18/2007"
+ },
+ {
+   "first_name": "Erling",
+   "last_name": "Kizito",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "03/14/2008"
+ },
+ {
+   "first_name": "Jessie",
+   "last_name": "Nambi",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "09/08/2006"
+ },
+ {
+   "first_name": "Medrine",
+   "last_name": "Kobusingye",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "10/22/2007"
+ },
+ {
+   "first_name": "Ritah",
+   "last_name": "Belanie",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "11/19/2007"
+ },
+ {
+   "first_name": "Stephanie",
+   "last_name": "Nammuli",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "09/22/2007"
+ },
+ {
+   "first_name": "Nicole",
+   "last_name": "Ansinguza",
+   "other_name": "Kwesiga",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "06/25/2005"
+ },
+ {
+   "first_name": "Portia",
+   "last_name": "Alinda",
+   "gender": "Female",
+   "house": "Fire",
+   "dob": "12/24/2006"
+ },
+ {
+   "first_name": "Reginald",
+   "last_name": "Matovu",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "08/26/2006"
+ },
+ {
+   "first_name": "Nathan",
+   "last_name": "Ayesiga",
+   "other_name": "Katarikawe",
+   "gender": "Male",
+   "house": "Fire",
+   "dob": "09/04/2006"
+ },
+ {
+   "first_name": "Christian",
+   "last_name": "Byabagye",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "06/18/2012"
+ },
+ {
+   "first_name": "Jeremiah",
+   "last_name": "Victor",
+   "other_name": "Ssebuwufu",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "09/10/2011"
+ },
+ {
+   "first_name": "Jesse",
+   "last_name": "Jireh",
+   "other_name": "Twinamatsiko",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "03/05/2012"
+ },
+ {
+   "first_name": "Martha",
+   "last_name": "Nowamani",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "12/02/2012"
+ },
+ {
+   "first_name": "Antonia",
+   "last_name": "Zara",
+   "other_name": "Ikanza",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "07/21/2011"
+ },
+ {
+   "first_name": "Benita",
+   "last_name": "Maria",
+   "other_name": "Oundo",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "06/08/2012"
+ },
+ {
+   "first_name": "Jordyn",
+   "last_name": "Genesis",
+   "other_name": "Katasi Kisakye",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "03/05/2012"
+ },
+ {
+   "first_name": "Nathaniel",
+   "last_name": "Kalenzi",
+   "other_name": "Amani",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "12/29/2011"
+ },
+ {
+   "first_name": "Ragid",
+   "last_name": "Abdelaziz",
+   "other_name": "Osman Mohamed",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "04/04/2010"
+ },
+ {
+   "first_name": "Austin",
+   "last_name": "Akampa",
+   "other_name": "Byamugisha",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "01/10/2011"
+ },
+ {
+   "first_name": "Daniel",
+   "last_name": "Konan",
+   "other_name": "Okoth",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "04/24/2012"
+ },
+ {
+   "first_name": "Elijah",
+   "last_name": "Ayiko",
+   "other_name": "Samuel",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "03/25/2012"
+ },
+ {
+   "first_name": "Samantha",
+   "last_name": "Treasure",
+   "other_name": "Benson",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "12/22/2011"
+ },
+ {
+   "first_name": "Zoe",
+   "last_name": "Nabulya",
+   "other_name": "Mwanje",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "09/21/2011"
+ },
+ {
+   "first_name": "Leyan",
+   "last_name": "Abubakerelsidig",
+   "other_name": "Abdelrahman Ismail Kibeida",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "09/29/2011"
+ },
+ {
+   "first_name": "Gideon",
+   "last_name": "Manzi",
+   "other_name": "Nkunda",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "09/16/2010"
+ },
+ {
+   "first_name": "Charline",
+   "last_name": "Hannah",
+   "other_name": "Musenze",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "01/01/2011"
+ },
+ {
+   "first_name": "Elizabeth",
+   "last_name": "Shan",
+   "other_name": "Nyakoojo",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "03/14/2011"
+ },
+ {
+   "first_name": "Ezekiel",
+   "last_name": "Biwot",
+   "other_name": "Ochieng",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "06/15/2011"
+ },
+ {
+   "first_name": "Nathan",
+   "last_name": "Noel",
+   "other_name": "Okidi",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "12/25/2010"
+ },
+ {
+   "first_name": "Divine",
+   "last_name": "Joshua",
+   "other_name": "Ssebuwufu",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "11/03/2010"
+ },
+ {
+   "first_name": "Denise",
+   "last_name": "Cute",
+   "other_name": "Abaasa",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "07/11/2010"
+ },
+ {
+   "first_name": "Nathan",
+   "last_name": "Kanyankore",
+   "other_name": "Ayabatwa",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "11/14/2009"
+ },
+ {
+   "first_name": "Jordan",
+   "last_name": "Mugisha",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "08/25/2010"
+ },
+ {
+   "first_name": "Amy",
+   "last_name": "Kayla",
+   "other_name": "Kwera Mwesigwa",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "02/18/2011"
+ },
+ {
+   "first_name": "Nathan",
+   "last_name": "Mugume",
+   "other_name": "Tindyebwa",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "05/08/2011"
+ },
+ {
+   "first_name": "Mir",
+   "last_name": "Zarif",
+   "other_name": "Abrar",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "12/16/2010"
+ },
+ {
+   "first_name": "Alvin",
+   "last_name": "Joshua",
+   "other_name": "Arinatwe",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "12/28/2009"
+ },
+ {
+   "first_name": "Atarah",
+   "last_name": "Mukunde",
+   "other_name": "Ikanza",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "03/03/2010"
+ },
+ {
+   "first_name": "Joylyn",
+   "last_name": "Kirabo",
+   "other_name": "Muhumuza",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "11/27/2010"
+ },
+ {
+   "first_name": "Enoch",
+   "last_name": "Kairumba",
+   "other_name": "Mwenda",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "09/24/2011"
+ },
+ {
+   "first_name": "Natalie",
+   "last_name": "Ruth",
+   "other_name": "Ayebare",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "01/19/2009"
+ },
+ {
+   "first_name": "Akram",
+   "last_name": "Batungi",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "01/27/2009"
+ },
+ {
+   "first_name": "Rashan",
+   "last_name": "Ssesanga",
+   "other_name": "Gwayambadde",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "10/27/2011"
+ },
+ {
+   "first_name": "Deirdre",
+   "last_name": "Lamar",
+   "other_name": "Bigena",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "10/31/2009"
+ },
+ {
+   "first_name": "Theola",
+   "last_name": "Aber",
+   "other_name": "Kyomugisha",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "07/07/2020"
+ },
+ {
+   "first_name": "Jessie",
+   "last_name": "Mbabazi",
+   "other_name": "Muhumuza",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "06/05/2009"
+ },
+ {
+   "first_name": "Joshua",
+   "last_name": "Ainebyoona",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "09/28/2009"
+ },
+ {
+   "first_name": "Ethan",
+   "last_name": "Joel",
+   "other_name": "Kawuma",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "09/19/2009"
+ },
+ {
+   "first_name": "Hannah",
+   "last_name": "Keza",
+   "other_name": "Kengoro",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "07/17/2009"
+ },
+ {
+   "first_name": "Erica",
+   "last_name": "Louise",
+   "other_name": "Nyakake Nyakoojo",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "10/15/2009"
+ },
+ {
+   "first_name": "Davita",
+   "last_name": "Krisha",
+   "other_name": "Sebulime",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "07/05/2008"
+ },
+ {
+   "first_name": "Burhan",
+   "last_name": "Khan",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "03/15/2010"
+ },
+ {
+   "first_name": "Kayla",
+   "last_name": "Nkwanzi",
+   "other_name": "Mugasha",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "04/08/2010"
+ },
+ {
+   "first_name": "Destiny",
+   "last_name": "Tirzah",
+   "other_name": "Kankaka",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "07/12/2009"
+ },
+ {
+   "first_name": "Raimunda",
+   "last_name": "Sanchia",
+   "other_name": "Akankwasa",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "11/23/2008"
+ },
+ {
+   "first_name": "Daniel",
+   "last_name": "Picasso",
+   "other_name": "Jjuuko",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "09/10/2007"
+ },
+ {
+   "first_name": "Javaan",
+   "last_name": "Martin",
+   "other_name": "Raphael Malinga",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "04/07/2008"
+ },
+ {
+   "first_name": "Bethelim",
+   "last_name": "Favor",
+   "other_name": "Shilovita",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "05/01/2008"
+ },
+ {
+   "first_name": "Glen",
+   "last_name": "Mugume",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "11/02/2008"
+ },
+ {
+   "first_name": "Alex",
+   "last_name": "Mwene",
+   "other_name": "Rumanyika",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "08/27/2009"
+ },
+ {
+   "first_name": "Dinah",
+   "last_name": "Sanyu",
+   "other_name": "Karungyi",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "11/30/2008"
+ },
+ {
+   "first_name": "Arnold",
+   "last_name": "Agira",
+   "other_name": "Byamugisha",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "01/11/2008"
+ },
+ {
+   "first_name": "Izoba",
+   "last_name": "Karuhanga",
+   "other_name": "Kareba",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "06/17/2009"
+ },
+ {
+   "first_name": "Arianah",
+   "last_name": "Grace",
+   "other_name": "Kasiita Namatovu",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "03/17/2009"
+ },
+ {
+   "first_name": "Larry",
+   "last_name": "Chase",
+   "other_name": "Nyakoojo",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "10/18/2008"
+ },
+ {
+   "first_name": "Elijah",
+   "last_name": "Tendo",
+   "other_name": "Bashungura",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "11/24/2006"
+ },
+ {
+   "first_name": "Zoe",
+   "last_name": "Genesis",
+   "other_name": "Wandera",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "01/20/2007"
+ },
+ {
+   "first_name": "Daniel",
+   "last_name": "Rukundo",
+   "other_name": "Nuwagaba",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "11/28/2008"
+ },
+ {
+   "first_name": "Karen",
+   "last_name": "Gladys",
+   "other_name": "Kalema",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "03/13/2008"
+ },
+ {
+   "first_name": "Nissi",
+   "last_name": "Mulungi",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "12/05/2008"
+ },
+ {
+   "first_name": "Markline",
+   "last_name": "Joella",
+   "other_name": "Ageo",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "02/27/2007"
+ },
+ {
+   "first_name": "Dave",
+   "last_name": "Rwamahe",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "04/24/2009"
+ },
+ {
+   "first_name": "Nicole",
+   "last_name": "Ainemukama",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "12/10/2007"
+ },
+ {
+   "first_name": "Louis",
+   "last_name": "Kalule",
+   "other_name": "Mukasa",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "05/01/2009"
+ },
+ {
+   "first_name": "Didah",
+   "last_name": "Naomi",
+   "other_name": "Nanteza",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "04/28/2008"
+ },
+ {
+   "first_name": "Raphael",
+   "last_name": "Ssentongo",
+   "other_name": "Kiggundu",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "08/26/2007"
+ },
+ {
+   "first_name": "Trust",
+   "last_name": "Mason",
+   "other_name": "Nangumya",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "06/22/2008"
+ },
+ {
+   "first_name": "Ryan",
+   "last_name": "Jethro",
+   "other_name": "Kawuma",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "05/05/2008"
+ },
+ {
+   "first_name": "Carlton",
+   "last_name": "Musenze",
+   "gender": "Male",
+   "house": "Water",
+   "dob": "01/09/2008"
+ },
+ {
+   "first_name": "Ethel",
+   "last_name": "Abigail",
+   "other_name": "Nanteza",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "09/05/2007"
+ },
+ {
+   "first_name": "Nicole",
+   "last_name": "Abigail",
+   "other_name": "Nabayego",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "02/20/2009"
+ },
+ {
+   "first_name": "Tangaza",
+   "last_name": "Amani",
+   "other_name": "Kareba",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "04/13/2007"
+ },
+ {
+   "first_name": "Charissa",
+   "last_name": "Kamahoro",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "09/27/2005"
+ },
+ {
+   "first_name": "Geila",
+   "last_name": "Lamar",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "10/20/2006"
+ },
+ {
+   "first_name": "Nadia",
+   "last_name": "Siima",
+   "gender": "Female",
+   "house": "Water",
+   "dob": "02/21/2006"
+ },
+ {
+   "first_name": "Alana",
+   "last_name": "Muzee",
+   "other_name": "Namuwewo",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "08/17/2012"
+ },
+ {
+   "first_name": "Elijah",
+   "last_name": "Tayebwa",
+   "other_name": "Mukuru",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "06/24/2012"
+ },
+ {
+   "first_name": "Abdou",
+   "last_name": "Hakim",
+   "other_name": "Seck",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "09/09/2011"
+ },
+ {
+   "first_name": "Elaine",
+   "last_name": "Ainembabazi",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "01/09/2012"
+ },
+ {
+   "first_name": "Kayla",
+   "last_name": "Sanyu",
+   "other_name": "Sekidde",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "09/30/2011"
+ },
+ {
+   "first_name": "Keith",
+   "last_name": "Bamujje",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "10/27/2011"
+ },
+ {
+   "first_name": "Krystian",
+   "last_name": "Rukundo",
+   "other_name": "Mucunguzi",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "11/25/2012"
+ },
+ {
+   "first_name": "Avi",
+   "last_name": "Oriba",
+   "other_name": "Oloya",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "06/25/2012"
+ },
+ {
+   "first_name": "Elizabeth",
+   "last_name": "Kayla",
+   "other_name": "Tonda",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "01/03/2012"
+ },
+ {
+   "first_name": "Antonio",
+   "last_name": "Jontae",
+   "other_name": "Themba Kairu",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "04/08/2010"
+ },
+ {
+   "first_name": "Jayden",
+   "last_name": "Keith",
+   "other_name": "Kagumaho",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "08/14/2011"
+ },
+ {
+   "first_name": "Mariam",
+   "last_name": "Mohamed",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "02/05/2010"
+ },
+ {
+   "first_name": "Kanaan",
+   "last_name": "Nkambwe",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "11/10/2011"
+ },
+ {
+   "first_name": "Kayla",
+   "last_name": "Ruth",
+   "other_name": "Ivanna Sebbale",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "05/07/2010"
+ },
+ {
+   "first_name": "Khloe",
+   "last_name": "Lwanga",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "12/19/2011"
+ },
+ {
+   "first_name": "Keilah",
+   "last_name": "Kuteesa",
+   "other_name": "Bamujje",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "02/11/2010"
+ },
+ {
+   "first_name": "Shalom",
+   "last_name": "Hope",
+   "other_name": "Mwebaze",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "09/04/2010"
+ },
+ {
+   "first_name": "Denise",
+   "last_name": "Nabaka",
+   "other_name": "Ntege",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "08/23/2011"
+ },
+ {
+   "first_name": "Manzi",
+   "last_name": "Rwomushana",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "01/08/2010"
+ },
+ {
+   "first_name": "Lina",
+   "last_name": "Mohamed",
+   "other_name": "Ismail Yousif",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "10/07/2010"
+ },
+ {
+   "first_name": "Jairus",
+   "last_name": "Mulondo",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "02/09/2011"
+ },
+ {
+   "first_name": "Michelle",
+   "last_name": "Musoba",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "06/24/2023"
+ },
+ {
+   "first_name": "Adam",
+   "last_name": "Imran",
+   "other_name": "Idusso",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "02/21/2010"
+ },
+ {
+   "first_name": "Clarisse",
+   "last_name": "Helena",
+   "other_name": "Kajja",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "04/06/2011"
+ },
+ {
+   "first_name": "Amaani",
+   "last_name": "Kananura",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "01/24/2011"
+ },
+ {
+   "first_name": "Benjamin",
+   "last_name": "Brandon",
+   "other_name": "Mbonye",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "05/10/2011"
+ },
+ {
+   "first_name": "Nimrod",
+   "last_name": "Leone",
+   "other_name": "Mpwabwoba",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "11/01/2009"
+ },
+ {
+   "first_name": "Macario",
+   "last_name": "Mwesigwa",
+   "other_name": "Mutenga",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "07/03/2011"
+ },
+ {
+   "first_name": "Elizabeth",
+   "last_name": "Birungi",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "04/30/2010"
+ },
+ {
+   "first_name": "Carla",
+   "last_name": "Tina",
+   "other_name": "Kenyana",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "09/10/2009"
+ },
+ {
+   "first_name": "Jordan",
+   "last_name": "Kirabo",
+   "other_name": "Nkambwe",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "07/05/2010"
+ },
+ {
+   "first_name": "Chantal",
+   "last_name": "Lamaro",
+   "other_name": "Oloya",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "01/25/2009"
+ },
+ {
+   "first_name": "Crystal",
+   "last_name": "Peninnah",
+   "other_name": "Musoba",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "11/11/2008"
+ },
+ {
+   "first_name": "Abigail",
+   "last_name": "Chelsea",
+   "other_name": "Byatwike",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "06/10/2010"
+ },
+ {
+   "first_name": "Amara",
+   "last_name": "Kananura",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "09/10/2009"
+ },
+ {
+   "first_name": "Divine",
+   "last_name": "Love",
+   "other_name": "Muwanguzi Muwonge",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "01/14/2009"
+ },
+ {
+   "first_name": "Jayden",
+   "last_name": "Yata",
+   "other_name": "Manzi",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "02/13/2010"
+ },
+ {
+   "first_name": "Chad",
+   "last_name": "Tumusiime",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "05/23/2011"
+ },
+ {
+   "first_name": "Samantha",
+   "last_name": "Faith",
+   "other_name": "Ansumba",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "08/03/2009"
+ },
+ {
+   "first_name": "Delwyn",
+   "last_name": "Mishael",
+   "other_name": "Aguma",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "08/06/2008"
+ },
+ {
+   "first_name": "Able",
+   "last_name": "Murungi",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "01/20/2010"
+ },
+ {
+   "first_name": "Joshua",
+   "last_name": "Jones",
+   "other_name": "Kiberu-Mulinde",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "08/21/2009"
+ },
+ {
+   "first_name": "Gina",
+   "last_name": "Nimaro",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "05/01/2010"
+ },
+ {
+   "first_name": "Abigail",
+   "last_name": "Sarah",
+   "other_name": "Kirunda",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "03/10/2009"
+ },
+ {
+   "first_name": "Kwesiga",
+   "last_name": "Kyle",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "08/03/2010"
+ },
+ {
+   "first_name": "Mary",
+   "last_name": "Kirabo",
+   "other_name": "Namuzungu Kiryabwire",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "04/28/2009"
+ },
+ {
+   "first_name": "Eli",
+   "last_name": "Mwami",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "09/23/2008"
+ },
+ {
+   "first_name": "Kyla",
+   "last_name": "Mercedes",
+   "other_name": "Lwanga",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "05/15/2009"
+ },
+ {
+   "first_name": "Deborah",
+   "last_name": "Abigail",
+   "other_name": "Kirabo Kairu",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "06/26/2009"
+ },
+ {
+   "first_name": "Ethan",
+   "last_name": "Muhumuza",
+   "other_name": "Sancho",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "04/25/2009"
+ },
+ {
+   "first_name": "Tyrone",
+   "last_name": "Tendo",
+   "other_name": "Lwanga",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "04/02/2009"
+ },
+ {
+   "first_name": "Cindrella",
+   "last_name": "Musiime",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "01/28/2008"
+ },
+ {
+   "first_name": "Ariella",
+   "last_name": "Katusiime",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "02/13/2009"
+ },
+ {
+   "first_name": "Jordan",
+   "last_name": "Tendo",
+   "other_name": "Kairu",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "09/12/2007"
+ },
+ {
+   "first_name": "Kayla",
+   "last_name": "Kunda",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "04/01/2008"
+ },
+ {
+   "first_name": "Melinda",
+   "last_name": "Martha",
+   "other_name": "Muhiire",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "08/22/2006"
+ },
+ {
+   "first_name": "Samara",
+   "last_name": "Nimusiima",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "08/17/2007"
+ },
+ {
+   "first_name": "Chelsie",
+   "last_name": "Mugabi",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "06/26/2007"
+ },
+ {
+   "first_name": "Mercy",
+   "last_name": "Blessing",
+   "other_name": "Mwebaza Mugwanya",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "02/05/2008"
+ },
+ {
+   "first_name": "David",
+   "last_name": "Rukare",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "12/02/2007"
+ },
+ {
+   "first_name": "Mark",
+   "last_name": "Kusimba",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "11/28/2008"
+ },
+ {
+   "first_name": "Keren",
+   "last_name": "Kukiriza",
+   "other_name": "Bamujje",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "10/01/2006"
+ },
+ {
+   "first_name": "Arianna",
+   "last_name": "Mbabazi",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "07/20/2007"
+ },
+ {
+   "first_name": "Nicole",
+   "last_name": "Okae",
+   "other_name": "Kiica",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "11/17/2006"
+ },
+ {
+   "first_name": "Abigail",
+   "last_name": "Mugabi",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "09/24/2005"
+ },
+ {
+   "first_name": "Rukundo",
+   "last_name": "Rwomushana",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "02/11/2007"
+ },
+ {
+   "first_name": "Ethan",
+   "last_name": "Kituku",
+   "other_name": "Kato",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "07/27/2007"
+ },
+ {
+   "first_name": "Tiara",
+   "last_name": "Ainembabazi",
+   "other_name": "Nduga Khamasi",
+   "gender": "Female",
+   "house": "Wind",
+   "dob": "06/28/2005"
+ },
+ {
+   "first_name": "Nathan",
+   "last_name": "Kituku",
+   "other_name": "Kakuru",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "07/27/2007"
+ },
+ {
+   "first_name": "Geofrey",
+   "last_name": "Musoba",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "02/12/2006"
+ },
+ {
+   "first_name": "Michael",
+   "last_name": "Mwesigwa",
+   "gender": "Male",
+   "house": "Wind",
+   "dob": "10/03/2005"
+ }
+]

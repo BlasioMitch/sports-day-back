@@ -67,7 +67,8 @@ GamePlayRouter.post('/', async (request, response, next) => {
                         }
                     )
                 })
-                Promise.all([gameUpdel, students, gameUpdate,forUpdate]).then(() => {
+                Promise.all([gameUpdel, students, gameUpdate,forUpdate]).then(res => {
+                    console.log(res, ' resp backend')
                     response.json({message:'Registered'})
                     console.log('Registration Done')
                 }).catch(err => next(err))

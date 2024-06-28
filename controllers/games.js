@@ -46,7 +46,8 @@ gamesRouter.post('/', async (request, response, next) =>{
                 category: body.category,
                 relay: body.relay,
                 gender:body.gender,
-                player_no:body.player_no
+                player_no:body.player_no,
+                players:[]
             }) 
             game.save()
             .then(savedGame => {
@@ -61,7 +62,8 @@ gamesRouter.post('/', async (request, response, next) =>{
                     category: category,
                     relay: body.relay,
                     gender:body.gender,
-                    player_no:body.player_no
+                    player_no:body.player_no,
+                    players: []
                 })
                 game.save()
                 .then(() => {
